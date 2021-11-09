@@ -5,5 +5,5 @@ void setup() {
 }
 
 void loop() {
-  analogWrite(Mosfet,255);
+  analogWrite(Mosfet, 255);
 }
