@@ -35,8 +35,8 @@ Serial.print(RawValue);
 Serial.print("\t mV = "); // toont de gemeten spanning aan de ingang
 Serial.print(Voltage,3); // zorgt dat er drie cijcers na de komma staat
 Serial.print("\t Amps = "); // toont hoeveel stroom er vloeit
-Serial.print(Amps,3);
-Serial.print("\t gemiddelde = "); 
-Serial.println(gem_ams,3);
-delay(1000);
+Serial.print(Amps,3); // zorgt dat er 3 cijfers na de komma zijn
+Serial.print("\t gemiddelde = "); //print de gemiddelde waarde
+Serial.println(gem_ams,3); // zorgt dat er 3 cijfers na de komma zijn
+delay(1000); // wacht 1 seconde
 }
