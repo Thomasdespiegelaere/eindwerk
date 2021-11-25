@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 
-
-
 import serial
-
 import time
 
 
@@ -14,30 +11,21 @@ ser = serial.Serial('/dev/ttyACM0', 9600, timeout=5)
 
 # read from Arduino
 
-input = ser.read()
-
-print ("Read input " + input.decode("utf-8") + " from Arduino")
+waarde = ser.read()
+print ("Read input " + waarde.decode("utf-8") + " from Arduino")
 
 
 
 while 1:
 
         # write something back
-
-        ser.write(b'A')
-
-
-
-        # read response back from Arduino
-
-        for i in range (0,3):
-
-                input = ser.read()
-
-                input_number = ord(input)
-
-                print ("Read input back: " + str(input_number))
-
-
-
+        ingang = input("---> ")
+        if ingang == 'on' :
+            ser.write(b'1')
+            aan = ser.read()
+            print ("Read input " + aan.decode("utf-8") + " from Arduino")
+        elif ingang == 'off' :
+            ser.write(b'0')
+            uit = ser.read()
+            print ("Read input " + uit.decode("utf-8") + " from Arduino")
         time.sleep(1)
