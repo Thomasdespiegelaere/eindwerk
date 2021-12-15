@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "542789732482",
+    "firebase_url": "https://eindwerk-ba782-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "eindwerk-ba782",
+    "storage_bucket": "eindwerk-ba782.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542789732482:android:5905f0101c2d8431b70c9b",
+        "android_client_info": {
+          "package_name": "com.example.eindwerk_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542789732482-4tm5tforhtljd37b1l2fdtnu9t908034.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eindwerk_app",
+            "certificate_hash": "6a8b8966a17be5b1c6df79b322328a4476bd9909"
+          }
+        },
+        {
+          "client_id": "542789732482-h5v1icnojbs028iqv3c6icm7853gaatg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-dKbtrwvkdPXRZcqDqLq73L6apk_84Rs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542789732482-h5v1icnojbs028iqv3c6icm7853gaatg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
