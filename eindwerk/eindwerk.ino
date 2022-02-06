@@ -36,7 +36,7 @@ bool Zondag_Lichten = true;
 bool Zondag_Vaatwas = true;
 
 bool reset = false;
-
+int batterij_level = 0;
 void setup() {
   Serial.begin(9600);
   EEPROM.get(0, Dinsdag_Boiler);
@@ -75,6 +75,8 @@ void setup() {
   EEPROM.get(27, Zondag_Vaatwas);
   
   EEPROM.get(28, reset);
+
+  EEPROM.get(29, batterij_level);
 }
 
 void loop() {
