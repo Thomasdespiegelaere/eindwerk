@@ -58,6 +58,8 @@ float Amps = 0;
 float som_samples = 0;
 float gem_ams = 0;
 
+bool var = true;
+
 void setup() {
   Serial.begin(9600);
   EEPROM.get(0, Dinsdag_Boiler);
@@ -106,11 +108,13 @@ void loop() {
   stroomsensor();
   spanningzon();
   batterijspanning();
+  opladen_batterij();
   
 }
 
 void Weekplanning() {
-   
+    var = true;
+    while (var == true){
     delay(10);
     Serial.println("dagen");
     delay(10);
@@ -451,10 +455,16 @@ void Weekplanning() {
         Zondag_Vaatwas = true;
         EEPROM.put(27, Zondag_Vaatwas);             
       }     
+    }
+    else if (Dag_Ver == "normale weekplanning") {
+      reset = true;
+      EEPROM.put(28, reset);
+      var = false;         
     }else{
      delay(1000);
-     exit(0);    
+     var = false;    
     }
+  }
 }
 
 void stroomsensor(){
@@ -552,6 +562,7 @@ void batterijspanning() {
     batterij_level = 0;
     }
   delay(1000);
+  EEPROM.put(29, batterij_level);
 }
 
 void opladen_batterij() {  
@@ -565,4 +576,5 @@ void opladen_batterij() {
       analogWrite(3, 0);
       analogWrite(5, 0);
    }
+  delay(5000);
 }

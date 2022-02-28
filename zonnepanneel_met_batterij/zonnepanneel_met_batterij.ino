@@ -1,18 +1,18 @@
-const int analogIn = A0;
-const int Mosfet = 3;
-const int Mosfet_bat = 5;
-int RawValue= 0;  
+const int analogIn = A0;        
+const int Mosfet = 3;       //mosfets
+const int Mosfet_bat = 5;   
+int RawValue= 0;        //stroomsensor variabelen
 float Voltage = 0; 
 float Amps = 0; 
 float som_samples = 0;
 float gem_ams = 0;
 
-const int pinA1 = A1; 
+const int pinA1 = A1;     //spanningsensor zon
 float adc_voltage = 0.0;
 float zon_voltage = 0.0;
 int adc_value = 0;
 
-const int pinA2 = A2; 
+const int pinA2 = A2;          //spanningsensor batterij
 float adc_voltage2 = 0.0;
 float batt_voltage = 0.0;
 int adc_value2 = 0;
@@ -22,15 +22,15 @@ void setup(){
   pinMode(3, OUTPUT);    //defineerd pin 3 als uitgang
   pinMode(5, OUTPUT);    //defineerd pin 5 als uitgang
   Serial.begin(9600);    //start de seriele communicatie en stelt deze in op 9600 baud
-  analogWrite(3, 0);
+  analogWrite(3, 0);     //start de mosfets
   analogWrite(5, 0);
 }
 
-void loop() {  
-  stroomsensor();
-  spanningzon();
-  batterij();
-  if (zon_voltage > batt_voltage){   
+void loop() {         //main programma
+  stroomsensor();   //meet de stroom
+  spanningzon();    //meet de spanning van het zonnepaneel
+  batterij();       //meet de spanning van de batterij
+  if (zon_voltage > batt_voltage){  //kijk ofdat de spanning van het zonnepaneel groter is dan die van de batterij
     analogWrite(3, 255);
     analogWrite(5, 255);
     }
@@ -58,20 +58,20 @@ delay(1000); // wacht 1 seconde
 }
 
 void spanningzon() {
-  adc_value = analogRead(pinA1);
-  adc_voltage  = (adc_value * 5.0 ) / 1023.0;  
-  zon_voltage = (adc_voltage / 0.2) + 0.17 ;
+  adc_value = analogRead(pinA1);    //lees de waarde binnen
+  adc_voltage  = (adc_value * 5.0 ) / 1023.0;   //bereken de spanning aan de hand van de waarde
+  zon_voltage = (adc_voltage / 0.2) + 0.17 ;    //zorg dat de fouten er uit worden gefilterd
   Serial.println(zon_voltage);
   delay(1000);
   }
 
 void batterij() {
   adc_value2 = analogRead(pinA2);
-  adc_voltage2  = (adc_value2 * 5.0 ) / 1023.0;  
-  batt_voltage = (adc_voltage2 / 0.2) + 0.17 ;
+  adc_voltage2  = (adc_value2 * 5.0 ) / 1023.0;   //bereken de spanning aan de hand van de waarde 
+  batt_voltage = (adc_voltage2 / 0.2) + 0.17 ;   //zorg dat de fouten er uit worden gefilterd
   delay(500);
-  Serial.println(batt_voltage);
-  if (batt_voltage >= 12.70) {
+  Serial.println(batt_voltage);                  
+  if (batt_voltage >= 12.70) {                  //vergelijk de waarden met het batterij level
     batterij_level = 100;         
     }
   else if (12.64 <= batt_voltage && batt_voltage <= 12.70) {
