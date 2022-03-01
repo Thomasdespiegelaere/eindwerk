@@ -16,3 +16,4 @@ git rm -f <file name> # To delete a file (force):
 git rm -r --cached <directory name> # To remove an entire directory from the working index (cached):
 git rm -r -f <file name> # To delete an entire directory (force):
 git status #status tonen van git repo
+#
