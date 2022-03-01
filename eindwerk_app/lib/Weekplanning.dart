@@ -6,7 +6,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:eindwerk_app/homepage.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 class Weekplanning extends StatefulWidget {
   @override

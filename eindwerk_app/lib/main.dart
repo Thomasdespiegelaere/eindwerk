@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); //voorkomt error

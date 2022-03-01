@@ -5,7 +5,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:eindwerk_app/homepage.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 class MymobileWeekplanning extends StatefulWidget {
   @override
@@ -290,11 +289,19 @@ class _MymobileWeekplanningState extends State<MymobileWeekplanning> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Row(children: [
-                          Text(
-                            "Maandag",
-                            style: TextStyle(
-                                color: Color.fromRGBO(92, 191, 204, 1),
-                                fontSize: 30),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color:
+                                            Color.fromRGBO(92, 191, 204, 1)))),
+                            child: Text(
+                              "Maandag",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(92, 191, 204, 1),
+                                  fontSize: 30),
+                            ),
                           ),
                         ]),
                         Row(children: [
@@ -394,11 +401,19 @@ class _MymobileWeekplanningState extends State<MymobileWeekplanning> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Row(children: [
-                          Text(
-                            "Dinsdag",
-                            style: TextStyle(
-                                color: Color.fromRGBO(92, 191, 204, 1),
-                                fontSize: 30),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color:
+                                            Color.fromRGBO(92, 191, 204, 1)))),
+                            child: Text(
+                              "Dinsdag",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(92, 191, 204, 1),
+                                  fontSize: 30),
+                            ),
                           ),
                         ]),
                         Row(children: [
@@ -498,11 +513,19 @@ class _MymobileWeekplanningState extends State<MymobileWeekplanning> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Row(children: [
-                          Text(
-                            "Woensdag",
-                            style: TextStyle(
-                                color: Color.fromRGBO(92, 191, 204, 1),
-                                fontSize: 30),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color:
+                                            Color.fromRGBO(92, 191, 204, 1)))),
+                            child: Text(
+                              "Woensdag",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(92, 191, 204, 1),
+                                  fontSize: 30),
+                            ),
                           ),
                         ]),
                         Row(children: [
@@ -602,11 +625,19 @@ class _MymobileWeekplanningState extends State<MymobileWeekplanning> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Row(children: [
-                          Text(
-                            "Donderdag",
-                            style: TextStyle(
-                                color: Color.fromRGBO(92, 191, 204, 1),
-                                fontSize: 30),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color:
+                                            Color.fromRGBO(92, 191, 204, 1)))),
+                            child: Text(
+                              "Donderdag",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(92, 191, 204, 1),
+                                  fontSize: 30),
+                            ),
                           ),
                         ]),
                         Row(children: [
@@ -711,11 +742,19 @@ class _MymobileWeekplanningState extends State<MymobileWeekplanning> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Row(children: [
-                          Text(
-                            "Vrijdag",
-                            style: TextStyle(
-                                color: Color.fromRGBO(92, 191, 204, 1),
-                                fontSize: 30),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color:
+                                            Color.fromRGBO(92, 191, 204, 1)))),
+                            child: Text(
+                              "Vrijdag",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(92, 191, 204, 1),
+                                  fontSize: 30),
+                            ),
                           ),
                         ]),
                         Row(children: [
@@ -815,11 +854,19 @@ class _MymobileWeekplanningState extends State<MymobileWeekplanning> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Row(children: [
-                          Text(
-                            "Zaterdag",
-                            style: TextStyle(
-                                color: Color.fromRGBO(92, 191, 204, 1),
-                                fontSize: 30),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color:
+                                            Color.fromRGBO(92, 191, 204, 1)))),
+                            child: Text(
+                              "Zaterdag",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(92, 191, 204, 1),
+                                  fontSize: 30),
+                            ),
                           ),
                         ]),
                         Row(children: [
@@ -919,11 +966,19 @@ class _MymobileWeekplanningState extends State<MymobileWeekplanning> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Row(children: [
-                          Text(
-                            "Zondag",
-                            style: TextStyle(
-                                color: Color.fromRGBO(92, 191, 204, 1),
-                                fontSize: 30),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color:
+                                            Color.fromRGBO(92, 191, 204, 1)))),
+                            child: Text(
+                              "Zondag",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(92, 191, 204, 1),
+                                  fontSize: 30),
+                            ),
                           ),
                         ]),
                         Row(children: [
@@ -1020,11 +1075,18 @@ class _MymobileWeekplanningState extends State<MymobileWeekplanning> {
                   padding: const EdgeInsets.only(top: 100),
                   child: Column(
                     children: [
-                      Text(
-                        "Reset weekplanning",
-                        style: TextStyle(
-                            color: Color.fromRGBO(92, 191, 204, 1),
-                            fontSize: 20),
+                      Container(
+                        padding: EdgeInsets.only(bottom: 5),
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    color: Color.fromRGBO(92, 191, 204, 1)))),
+                        child: Text(
+                          "Reset weekplanning",
+                          style: TextStyle(
+                              color: Color.fromRGBO(92, 191, 204, 1),
+                              fontSize: 20),
+                        ),
                       ),
                       Switch(
                         value: Reset,
