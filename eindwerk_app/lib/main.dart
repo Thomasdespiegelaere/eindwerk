@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
           false, //laat een debug banner verdwijnen in de hoek
       title: 'REG App', //titel van de app
       theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromRGBO(39, 66, 83,
-            100), //zet de achtergrond van de app naar iets zwart achtig
+        scaffoldBackgroundColor: Color.fromRGBO(25, 25, 25,
+            1), //zet de achtergrond van de app naar iets zwart achtig (39, 66, 83, 100),
         primarySwatch:
             Colors.lightBlue, //geeft de objecten standaard kleur blauw
         visualDensity: VisualDensity
