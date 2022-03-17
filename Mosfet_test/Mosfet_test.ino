@@ -5,5 +5,5 @@ void setup() {
 }
 
 void loop() {
-  analogWrite(Mosfet, 255); //zet de mosfet hellemaal open
+  analogWrite(Mosfet, 20); //zet de mosfet hellemaal open
 }

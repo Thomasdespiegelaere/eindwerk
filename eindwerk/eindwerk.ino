@@ -60,7 +60,27 @@ float gem_ams = 0;
 
 bool var = true;
 
-char aparaten[28];
+const int pinZ_1 = 3; 
+const int pinS0_1 = 2;
+const int pinS1_1 = 4;
+
+const int pinZ_2 = 5; 
+const int pinS0_2 = 8;
+const int pinS1_2 = 10;
+
+const int pinZ_3 = 6; 
+const int pinS0_3 = 7;
+const int pinS1_3 = 11;
+
+const int pinZ_4 = 9; 
+const int pinS0_4 = 12;
+const int pinS1_4 = 13;
+
+const int Mosfet_opladen = A3;
+
+unsigned long tijd;
+float uur;
+float dag;
 
 void setup() {
   Serial.begin(9600);
@@ -102,94 +122,125 @@ void setup() {
   EEPROM.get(28, reset);
 
   EEPROM.get(29, batterij_level);
+
+  pinMode(pinZ_1, OUTPUT);
+  pinMode(pinS0_1, OUTPUT);
+  pinMode(pinS1_1, OUTPUT);
+
+  pinMode(pinZ_2, OUTPUT);
+  pinMode(pinS0_2, OUTPUT);
+  pinMode(pinS1_2, OUTPUT);
+
+  pinMode(pinZ_3, OUTPUT);
+  pinMode(pinS0_3, OUTPUT);
+  pinMode(pinS1_3, OUTPUT);
+
+  pinMode(pinZ_4, OUTPUT);
+  pinMode(pinS0_4, OUTPUT);
+  pinMode(pinS1_4, OUTPUT);
 }
 
 void loop() {
-  Weekplanning(); 
+  //Weekplanning(); 
+  datum();
   if (zon_voltage > 12 && batterij_level < 50){
-    if (Dinsdag_Boiler == true) {
-                  
+    if (int(dag) == 1 || int(dag) == 8 || int(dag) == 15 || int(dag) == 22 || int(dag) == 29 || int(dag) == 36|| int(dag) == 43) {
+      if (Dinsdag_Boiler == true) {    
+        zon_Boiler();                        
+        }
+      else if (Dinsdag_Fornuis == true) {
+        
+        }
+      else if (Dinsdag_Lichten == true) {
+        
+        }
+      else if (Dinsdag_Vaatwas == true) {
+        
+        }
+       }
+    else if (int(dag) == 3 || int(dag) == 10 || int(dag) == 17 || int(dag) == 24 || int(dag) == 31 || int(dag) == 38 || int(dag) == 45) {      
+      if (Donderdag_Boiler == true) {
+        
+        }
+      else if (Donderdag_Fornuis == true) {
+        
+        } 
+      else if (Donderdag_Lichten == true) {
+        
+        }
+      else if (Donderdag_Vaatwas == true) {
+        
+        }
       }
-    else if (Dinsdag_Fornuis == true) {
-      
-      }
-    else if (Dinsdag_Lichten == true) {
-      
-      }
-    else if (Dinsdag_Vaatwas == true) {
-      
-      }
-    else if (Donderdag_Boiler == true) {
-      
-      }
-    else if (Donderdag_Fornuis == true) {
-      
-      } 
-    else if (Donderdag_Lichten == true) {
-      
-      }
-    else if (Donderdag_Vaatwas == true) {
-      
-      }
-    else if (Maandag_Boiler == true) {
-      
-      }
-    else if (Maandag_Fornuis == true) {
-      
-      } 
-    else if (Maandag_Lichten == true) {
-      
-      }
-    else if (Maandag_Vaatwas == true) {
-      
+    else if (int(dag) == 0 || int(dag) == 7 || int(dag) == 14 || int(dag) == 21 || int(dag) == 28 || int(dag) == 35 || int(dag) == 42) { 
+      if (Maandag_Boiler == true) {
+        
+        }
+      else if (Maandag_Fornuis == true) {
+        
+        } 
+      else if (Maandag_Lichten == true) {
+        
+        }
+      else if (Maandag_Vaatwas == true) {
+        
+        }
       }  
-     else if (Vrijdag_Boiler == true) {
-      
+    else if (int(dag) == 4 || int(dag) == 11 || int(dag) == 18 || int(dag) == 25 || int(dag) == 32 || int(dag) == 39 || int(dag) == 46) { 
+      if (Vrijdag_Boiler == true) {
+        
+        }
+      else if (Vrijdag_Fornuis == true) {
+        
+        } 
+      else if (Vrijdag_Lichten == true) {
+       
+        }
+      else if (Vrijdag_Vaatwas == true) {
+        
+        }
+       }
+    else if (int(dag) == 2 || int(dag) == 9 || int(dag) == 16 || int(dag) == 23 || int(dag) == 30 || int(dag) == 37 || int(dag) == 44) { 
+      if (Woensdag_Boiler == true) {
+        
+        }
+      else if (Woensdag_Fornuis == true) {
+        
+        } 
+      else if (Woensdag_Lichten == true) {
+        
+        }
+      else if (Woensdag_Vaatwas == true) {
+        
+        }
       }
-    else if (Vrijdag_Fornuis == true) {
-      
-      } 
-    else if (Vrijdag_Lichten == true) {
-      
+    else if (int(dag) == 5 || int(dag) == 12 || int(dag) == 19 || int(dag) == 26 || int(dag) == 33 || int(dag) == 40 || int(dag) == 47) { 
+      if (Zaterdag_Boiler == true) {
+        
+        }
+      else if (Zaterdag_Fornuis == true) {
+        
+        } 
+      else if (Zaterdag_Lichten == true) {
+        
+        }
+      else if (Zaterdag_Vaatwas == true) {
+        
+        }
       }
-    else if (Vrijdag_Vaatwas == true) {
-      
-      }
-    else if (Woensdag_Boiler == true) {
-      
-      }
-    else if (Woensdag_Fornuis == true) {
-      
-      } 
-    else if (Woensdag_Lichten == true) {
-      
-      }
-    else if (Woensdag_Vaatwas == true) {
-      
-      }
-    else if (Zaterdag_Boiler == true) {
-      
-      }
-    else if (Zaterdag_Fornuis == true) {
-      
-      } 
-    else if (Zaterdag_Lichten == true) {
-      
-      }
-    else if (Zaterdag_Vaatwas == true) {
-      
-      }
-    else if (Zondag_Boiler == true) {
-      
-      }
-    else if (Zondag_Fornuis == true) {
-      
-      } 
-    else if (Zondag_Lichten == true) {
-      
-      }
-    else if (Zondag_Vaatwas == true) {
-      
+    else if (int(dag) == 6 || int(dag) == 13 || int(dag) == 20 || int(dag) == 27 || int(dag) == 34 || int(dag) == 41 || int(dag) == 48) { 
+      if (Zondag_Boiler == true) {
+        
+        }
+      else if (Zondag_Fornuis == true) {
+        
+        } 
+      else if (Zondag_Lichten == true) {
+        
+        }
+      else if (Zondag_Vaatwas == true) {
+        
+        }
       }
     }
   if (zon_voltage < 12 && batterij_level > 50){
@@ -372,9 +423,6 @@ void loop() {
 }
 
 void Weekplanning() {
-    for (int i = 0; i <= 27; i++){
-      aparaten[i] = "";
-      }
     var = true;
     while (var == true){
     delay(10);
@@ -387,13 +435,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False") {
         Dinsdag_Boiler = false; 
-        EEPROM.put(0, Dinsdag_Boiler); 
-        aparaten[0] = "Dinsdag_Boiler";        
+        EEPROM.put(0, Dinsdag_Boiler);       
       }
       else if (Read == "True") {
         Dinsdag_Boiler = true;
-        EEPROM.put(0, Dinsdag_Boiler);     
-        aparaten[0] = "Dinsdag_Boiler";      
+        EEPROM.put(0, Dinsdag_Boiler);           
       }     
     }
     else if (Dag_Ver == "Dinsdag.Fornuis") {
@@ -401,13 +447,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Dinsdag_Fornuis = false;
-        EEPROM.put(1, Dinsdag_Fornuis); 
-        aparaten[1] = "Dinsdag_Fornuis";           
+        EEPROM.put(1, Dinsdag_Fornuis);            
       }
       else if (Read == "True") {
         Dinsdag_Fornuis = true;
-        EEPROM.put(1, Dinsdag_Fornuis);
-        aparaten[1] = "Dinsdag_Fornuis";             
+        EEPROM.put(1, Dinsdag_Fornuis);             
       }     
     }
     else if (Dag_Ver == "Dinsdag.Lichten") {
@@ -415,13 +459,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Dinsdag_Lichten = false;
-        EEPROM.put(2, Dinsdag_Lichten);
-        aparaten[2] = "Dinsdag_Lichten";            
+        EEPROM.put(2, Dinsdag_Lichten);           
       }
       else if (Read == "True") {
         Dinsdag_Lichten = true;
-        EEPROM.put(2, Dinsdag_Lichten);
-        aparaten[2] = "Dinsdag_Lichten";            
+        EEPROM.put(2, Dinsdag_Lichten);            
       }     
     }
     else if (Dag_Ver == "Dinsdag.Vaatwas") {
@@ -429,13 +471,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Dinsdag_Vaatwas = false;
-        EEPROM.put(3, Dinsdag_Vaatwas); 
-        aparaten[3] = "Dinsdag_Vaatwas";           
+        EEPROM.put(3, Dinsdag_Vaatwas);           
       }
       else if (Read == "True") {
         Dinsdag_Vaatwas = true;
-        EEPROM.put(3, Dinsdag_Vaatwas);   
-        aparaten[3] = "Dinsdag_Vaatwas";          
+        EEPROM.put(3, Dinsdag_Vaatwas);             
       }     
     }
     else if (Dag_Ver == "Donderdag.Boiler") {
@@ -443,13 +483,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Donderdag_Boiler = false; 
-        EEPROM.put(4, Donderdag_Boiler);
-        aparaten[4] = "Donderdag_Boiler";           
+        EEPROM.put(4, Donderdag_Boiler);           
       }
       else if (Read == "True") {
         Donderdag_Boiler = true;
-        EEPROM.put(4, Donderdag_Boiler);  
-        aparaten[4] = "Donderdag_Boiler";           
+        EEPROM.put(4, Donderdag_Boiler);             
       }     
     }
     else if (Dag_Ver == "Donderdag.Fornuis") {
@@ -457,13 +495,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Donderdag_Fornuis = false;
-        EEPROM.put(5, Donderdag_Fornuis);
-        aparaten[5] = "Donderdag_Fornuis";            
+        EEPROM.put(5, Donderdag_Fornuis);            
       }
       else if (Read == "True") {
         Donderdag_Fornuis = true;
-        EEPROM.put(5, Donderdag_Fornuis); 
-        aparaten[5] = "Donderdag_Fornuis";            
+        EEPROM.put(5, Donderdag_Fornuis);             
       }     
     }
     else if (Dag_Ver == "Donderdag.Lichten") {
@@ -471,13 +507,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Donderdag_Lichten = false;
-        EEPROM.put(6, Donderdag_Lichten);  
-        aparaten[6] = "Donderdag_Lichten";        
+        EEPROM.put(6, Donderdag_Lichten);          
       }
       else if (Read == "True") {
         Donderdag_Lichten = true;
-        EEPROM.put(6, Donderdag_Lichten); 
-        aparaten[6] = "Donderdag_Lichten";          
+        EEPROM.put(6, Donderdag_Lichten);           
       }     
     }
     else if (Dag_Ver == "Donderdag.Vaatwas") {
@@ -485,13 +519,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Donderdag_Vaatwas = false;
-        EEPROM.put(7, Donderdag_Vaatwas);   
-        aparaten[7] = "Donderdag_Vaatwas";        
+        EEPROM.put(7, Donderdag_Vaatwas);           
       }
       else if (Read == "True") {
         Donderdag_Vaatwas = true;  
-        EEPROM.put(7, Donderdag_Vaatwas); 
-        aparaten[7] = "Donderdag_Vaatwas";          
+        EEPROM.put(7, Donderdag_Vaatwas);           
       }     
     }
     else if (Dag_Ver == "Maandag.Boiler") {
@@ -499,13 +531,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Maandag_Boiler = false; 
-        EEPROM.put(8, Maandag_Boiler); 
-        aparaten[8] = "Maandag_Boiler";         
+        EEPROM.put(8, Maandag_Boiler);          
       }
       else if (Read == "True") {
         Maandag_Boiler = true; 
-        EEPROM.put(8, Maandag_Boiler);  
-        aparaten[8] = "Maandag_Boiler";     
+        EEPROM.put(8, Maandag_Boiler);       
       }     
     }
     else if (Dag_Ver == "Maandag.Fornuis") {
@@ -513,13 +543,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Maandag_Fornuis = false;
-        EEPROM.put(9, Maandag_Fornuis);
-        aparaten[9] = "Maandag_Fornuis";     
+        EEPROM.put(9, Maandag_Fornuis);     
       }
       else if (Read == "True") {
         Maandag_Fornuis = true; 
-        EEPROM.put(9, Maandag_Fornuis); 
-        aparaten[9] = "Maandag_Fornuis";            
+        EEPROM.put(9, Maandag_Fornuis);             
       }     
     }
     else if (Dag_Ver == "Maandag.Lichten") {
@@ -527,13 +555,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Maandag_Lichten = false;
-        EEPROM.put(10, Maandag_Lichten); 
-        aparaten[10] = "Maandag_Lichten";           
+        EEPROM.put(10, Maandag_Lichten);            
       }
       else if (Read == "True") {
         Maandag_Lichten = true;
-        EEPROM.put(10, Maandag_Lichten);
-        aparaten[10] = "Maandag_Lichten";             
+        EEPROM.put(10, Maandag_Lichten);             
       }     
     }
     else if (Dag_Ver == "Maandag.Vaatwas") {
@@ -541,13 +567,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Maandag_Vaatwas = false; 
-        EEPROM.put(11, Maandag_Vaatwas);
-        aparaten[11] = "Maandag_Vaatwas";            
+        EEPROM.put(11, Maandag_Vaatwas);        
       }
       else if (Read == "True") {
         Maandag_Vaatwas = true;  
-        EEPROM.put(11, Maandag_Vaatwas);
-        aparaten[11] = "Maandag_Vaatwas";           
+        EEPROM.put(11, Maandag_Vaatwas);           
       }     
     }
     else if (Dag_Ver == "Vrijdag.Boiler") {
@@ -555,13 +579,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Vrijdag_Boiler = false;
-        EEPROM.put(12, Vrijdag_Boiler);
-        aparaten[12] = "Vrijdag_Boiler";            
+        EEPROM.put(12, Vrijdag_Boiler);           
       }
       else if (Read == "True") {
         Vrijdag_Boiler = true; 
-        EEPROM.put(12, Vrijdag_Boiler);
-        aparaten[12] = "Vrijdag_Boiler";             
+        EEPROM.put(12, Vrijdag_Boiler);             
       }     
     }
     else if (Dag_Ver == "Vrijdag.Fornuis") {
@@ -569,13 +591,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Vrijdag_Fornuis = false;
-        EEPROM.put(13, Vrijdag_Fornuis);
-        aparaten[13] = "Vrijdag_Fornuis";            
+        EEPROM.put(13, Vrijdag_Fornuis);            
       }
       else if (Read == "True") {
         Vrijdag_Fornuis = true;
-        EEPROM.put(13, Vrijdag_Fornuis);
-        aparaten[13] = "Vrijdag_Fornuis";             
+        EEPROM.put(13, Vrijdag_Fornuis);             
       }     
     }
     else if (Dag_Ver == "Vrijdag.Lichten") {
@@ -583,13 +603,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Vrijdag_Lichten = false;
-        EEPROM.put(14, Vrijdag_Lichten);
-        aparaten[14] = "Vrijdag_Lichten";            
+        EEPROM.put(14, Vrijdag_Lichten);            
       }
       else if (Read == "True") {
         Vrijdag_Lichten = true;
-        EEPROM.put(14, Vrijdag_Lichten);
-        aparaten[14] = "Vrijdag_Lichten";           
+        EEPROM.put(14, Vrijdag_Lichten);           
       }     
     }
     else if (Dag_Ver == "Vrijdag.Vaatwas") {
@@ -597,13 +615,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Vrijdag_Vaatwas = false;
-        EEPROM.put(15, Vrijdag_Vaatwas);
-        aparaten[15] = "Vrijdag_Vaatwas";           
+        EEPROM.put(15, Vrijdag_Vaatwas);          
       }
       else if (Read == "True") {
         Vrijdag_Vaatwas = true;
-        EEPROM.put(15, Vrijdag_Vaatwas);
-        aparaten[15] = "Vrijdag_Vaatwas";            
+        EEPROM.put(15, Vrijdag_Vaatwas);            
       }     
     }
     else if (Dag_Ver == "Woensdag.Boiler") {
@@ -611,13 +627,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Woensdag_Boiler = false;   
-        EEPROM.put(16, Woensdag_Boiler);
-        aparaten[16] = "Woensdag_Boiler";       
+        EEPROM.put(16, Woensdag_Boiler);      
       }
       else if (Read == "True") {
         Woensdag_Boiler = true; 
-        EEPROM.put(16, Woensdag_Boiler);
-        aparaten[16] = "Woensdag_Boiler";           
+        EEPROM.put(16, Woensdag_Boiler);          
       }     
     }
     else if (Dag_Ver == "Woensdag.Fornuis") {
@@ -625,13 +639,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Woensdag_Fornuis = false;
-        EEPROM.put(17, Woensdag_Fornuis);
-        aparaten[17] = "Woensdag_Fornuis";            
+        EEPROM.put(17, Woensdag_Fornuis);           
       }
       else if (Read == "True") {
         Woensdag_Fornuis = true;
-        EEPROM.put(17, Woensdag_Fornuis);
-        aparaten[17] = "Woensdag_Fornuis";            
+        EEPROM.put(17, Woensdag_Fornuis);            
       }     
     }
     else if (Dag_Ver == "Woensdag.Lichten") {
@@ -639,13 +651,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Woensdag_Lichten = false;
-        EEPROM.put(18, Woensdag_Lichten);
-        aparaten[18] = "Woensdag_Lichten";           
+        EEPROM.put(18, Woensdag_Lichten);          
       }
       else if (Read == "True") {
         Woensdag_Lichten = true;
-        EEPROM.put(18, Woensdag_Lichten);
-        aparaten[18] = "Woensdag_Lichten";             
+        EEPROM.put(18, Woensdag_Lichten);             
       }     
     }
     else if (Dag_Ver == "Woensdag.Vaatwas") {
@@ -653,13 +663,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Woensdag_Vaatwas = false;
-        EEPROM.put(19, Woensdag_Vaatwas);
-        aparaten[19] = "Woensdag_Vaatwas";           
+        EEPROM.put(19, Woensdag_Vaatwas);          
       }
       else if (Read == "True") {
         Woensdag_Vaatwas = true; 
-        EEPROM.put(19, Woensdag_Vaatwas);
-        aparaten[19] = "Woensdag_Vaatwas";            
+        EEPROM.put(19, Woensdag_Vaatwas);            
       }     
     }
     else if (Dag_Ver == "Zaterdag.Boiler") {
@@ -667,13 +675,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Zaterdag_Boiler = false;
-        EEPROM.put(20, Zaterdag_Boiler);
-        aparaten[20] = "Zaterdag_Boiler";           
+        EEPROM.put(20, Zaterdag_Boiler);          
       }
       else if (Read == "True") {
         Zaterdag_Boiler = true;
-        EEPROM.put(20, Zaterdag_Boiler);
-        aparaten[20] = "Zaterdag_Boiler";            
+        EEPROM.put(20, Zaterdag_Boiler);            
       }     
     }
     else if (Dag_Ver == "Zaterdag.Fornuis") {
@@ -681,13 +687,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Zaterdag_Fornuis = false;
-        EEPROM.put(21, Zaterdag_Fornuis); 
-        aparaten[21] = "Zaterdag_Fornuis";           
+        EEPROM.put(21, Zaterdag_Fornuis);           
       }
       else if (Read == "True") {
         Zaterdag_Fornuis = true;
-        EEPROM.put(21, Zaterdag_Fornuis);
-        aparaten[21] = "Zaterdag_Fornuis";            
+        EEPROM.put(21, Zaterdag_Fornuis);           
       }     
     }
     else if (Dag_Ver == "Zaterdag.Lichten") {
@@ -695,13 +699,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Zaterdag_Lichten = false;
-        EEPROM.put(22, Zaterdag_Lichten);
-        aparaten[22] = "Zaterdag_Lichten";             
+        EEPROM.put(22, Zaterdag_Lichten);             
       }
       else if (Read == "True") {
         Zaterdag_Lichten = true;
-        EEPROM.put(22, Zaterdag_Lichten);
-        aparaten[22] = "Zaterdag_Lichten";           
+        EEPROM.put(22, Zaterdag_Lichten);          
       }     
     }
     else if (Dag_Ver == "Zaterdag.Vaatwas") {
@@ -709,13 +711,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Zaterdag_Vaatwas = false;
-        EEPROM.put(23, Zaterdag_Vaatwas);
-        aparaten[23] = "Zaterdag_Vaatwas";            
+        EEPROM.put(23, Zaterdag_Vaatwas);           
       }
       else if (Read == "True") {
         Zaterdag_Vaatwas = true;
-        EEPROM.put(23, Zaterdag_Vaatwas);
-        aparaten[23] = "Zaterdag_Vaatwas";             
+        EEPROM.put(23, Zaterdag_Vaatwas);            
       }     
     }
     else if (Dag_Ver == "Zondag.Boiler") {
@@ -723,13 +723,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Zondag_Boiler = false;
-        EEPROM.put(24, Zondag_Boiler); 
-        aparaten[24] = "Zondag_Boiler";           
+        EEPROM.put(24, Zondag_Boiler);           
       }
       else if (Read == "True") {
         Zondag_Boiler = true;
-        EEPROM.put(24, Zondag_Boiler);
-        aparaten[24] = "Zondag_Boiler";             
+        EEPROM.put(24, Zondag_Boiler);            
       }     
     }
     else if (Dag_Ver == "Zondag.Fornuis") {
@@ -737,13 +735,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Zondag_Fornuis = false;
-        EEPROM.put(25, Zondag_Fornuis); 
-        aparaten[25] = "Zondag_Fornuis";           
+        EEPROM.put(25, Zondag_Fornuis);            
       }
       else if (Read == "True") {
         Zondag_Fornuis = true;
-        EEPROM.put(25, Zondag_Fornuis);
-        aparaten[25] = "Zondag_Fornuis";          
+        EEPROM.put(25, Zondag_Fornuis);          
       }     
     }
     else if (Dag_Ver == "Zondag.Lichten") {
@@ -751,13 +747,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Zondag_Lichten = false;
-        EEPROM.put(26, Zondag_Lichten);
-        aparaten[26] = "Zondag_Lichten";           
+        EEPROM.put(26, Zondag_Lichten);           
       }
       else if (Read == "True") {
         Zondag_Lichten = true;
-        EEPROM.put(26, Zondag_Lichten);
-        aparaten[26] = "Zondag_Lichten";            
+        EEPROM.put(26, Zondag_Lichten);            
       }     
     }
     else if (Dag_Ver == "Zondag.Vaatwas") {
@@ -765,13 +759,11 @@ void Weekplanning() {
       Read = Serial.readString();
       if (Read == "False" ) {
         Zondag_Vaatwas = false;
-        EEPROM.put(27, Zondag_Vaatwas);
-        aparaten[27] = "Zondag_Vaatwas";            
+        EEPROM.put(27, Zondag_Vaatwas);            
       }
       else if (Read == "True") {
         Zondag_Vaatwas = true;
-        EEPROM.put(27, Zondag_Vaatwas);
-        aparaten[27] = "Zondag_Vaatwas";             
+        EEPROM.put(27, Zondag_Vaatwas);           
       }     
     }
     else if (Dag_Ver == "normale weekplanning") {
@@ -885,12 +877,76 @@ void opladen_batterij() {
   spanningzon();
   batterijspanning();
   if (zon_voltage > batt_voltage){   
-    analogWrite(3, 255);
-    analogWrite(5, 255);
+    analogWrite(Mosfet_opladen, 255);
     }
   else if (zon_voltage < batt_voltage){
-      analogWrite(3, 0);
-      analogWrite(5, 0);
+      analogWrite(Mosfet_opladen, 0);
    }
-  delay(5000);
+  delay(1);
 }
+
+void zon_Boiler() {
+  digitalWrite(pinS0_1, LOW);
+  digitalWrite(pinS1_1, HIGH);
+  }
+
+void zon_Fornuis() {
+  digitalWrite(pinS0_1, LOW);
+  digitalWrite(pinS1_1, HIGH);
+  }
+
+void zon_Lichten() {
+  digitalWrite(pinS0_1, LOW);
+  digitalWrite(pinS1_1, HIGH);
+  }
+
+void zon_Vaatwas() {
+  digitalWrite(pinS0_1, LOW);
+  digitalWrite(pinS1_1, HIGH);
+  }
+
+void batt_Boiler() {
+  digitalWrite(pinS0_1, LOW);
+  digitalWrite(pinS1_1, LOW);
+  }
+
+void batt_Fornuis() {
+  digitalWrite(pinS0_1, LOW);
+  digitalWrite(pinS1_1, LOW);
+  }
+
+void batt_Lichten() {
+  digitalWrite(pinS0_1, LOW);
+  digitalWrite(pinS1_1, LOW);
+  }
+
+void batt_Vaatwas() {
+  digitalWrite(pinS0_1, LOW);
+  digitalWrite(pinS1_1, LOW);
+  }
+
+void net_Boiler() {
+  digitalWrite(pinS0_1, HIGH);
+  digitalWrite(pinS1_1, LOW);
+  }
+
+void net_Fornuis() {
+  digitalWrite(pinS0_1, HIGH);
+  digitalWrite(pinS1_1, LOW);
+  }
+
+void net_Lichten() {
+  digitalWrite(pinS0_1, HIGH);
+  digitalWrite(pinS1_1, LOW);
+  }
+
+void net_Vaatwas() {
+  digitalWrite(pinS0_1, HIGH);
+  digitalWrite(pinS1_1, LOW);
+  }
+  
+void datum() {
+    tijd = millis();
+    uur = tijd / 2500;
+    dag = uur / 24;          
+    }
