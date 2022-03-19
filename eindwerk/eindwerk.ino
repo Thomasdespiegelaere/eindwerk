@@ -80,7 +80,7 @@ const int Mosfet_opladen = A3;
 
 unsigned long tijd;
 float uur;
-float dag;
+float dag = 0.0;
 
 void setup() {
   Serial.begin(9600);
@@ -141,24 +141,45 @@ void setup() {
 }
 
 void loop() {
-  //Weekplanning(); 
+  Weekplanning(); 
   datum();
+  batterijspanning();
+  spanningzon();
+  stroomsensor(); 
   if (zon_voltage > 12 && batterij_level < 50){
-    if (int(dag) == 1 || int(dag) == 8 || int(dag) == 15 || int(dag) == 22 || int(dag) == 29 || int(dag) == 36|| int(dag) == 43) {
-      if (Dinsdag_Boiler == true) {    
-        zon_Boiler();                        
-        }
-      else if (Dinsdag_Fornuis == true) {
-        
-        }
-      else if (Dinsdag_Lichten == true) {
-        
-        }
-      else if (Dinsdag_Vaatwas == true) {
-        
-        }
+    if (int(dag) == 1) { // dinsdag selectie
+      for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
+        if (x == 0){
+          if (Dinsdag_Boiler == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Boiler(); 
+              }                 
+                                   
+            }
+         }
+        else if (x == 1) {
+          if (Dinsdag_Fornuis == true) { 
+            if (uur >= 18.0 && uur <= 20.0 ){
+              zon_Fornuis();
+              }            
+            }
+         }
+        else if (x == 2) {
+          if (Dinsdag_Lichten == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Lichten();
+              }            
+            }
+         }
+        else if (x == 3){
+          if (Dinsdag_Vaatwas == true) {
+            zon_Vaatwas();            
+            }
+         }
+        x = x + 1;
        }
-    else if (int(dag) == 3 || int(dag) == 10 || int(dag) == 17 || int(dag) == 24 || int(dag) == 31 || int(dag) == 38 || int(dag) == 45) {      
+      }
+    else if (int(dag) == 3) {      
       if (Donderdag_Boiler == true) {
         
         }
@@ -172,7 +193,7 @@ void loop() {
         
         }
       }
-    else if (int(dag) == 0 || int(dag) == 7 || int(dag) == 14 || int(dag) == 21 || int(dag) == 28 || int(dag) == 35 || int(dag) == 42) { 
+    else if (int(dag) == 0) { 
       if (Maandag_Boiler == true) {
         
         }
@@ -186,7 +207,7 @@ void loop() {
         
         }
       }  
-    else if (int(dag) == 4 || int(dag) == 11 || int(dag) == 18 || int(dag) == 25 || int(dag) == 32 || int(dag) == 39 || int(dag) == 46) { 
+    else if (int(dag) == 4) { 
       if (Vrijdag_Boiler == true) {
         
         }
@@ -200,7 +221,7 @@ void loop() {
         
         }
        }
-    else if (int(dag) == 2 || int(dag) == 9 || int(dag) == 16 || int(dag) == 23 || int(dag) == 30 || int(dag) == 37 || int(dag) == 44) { 
+    else if (int(dag) == 2) { 
       if (Woensdag_Boiler == true) {
         
         }
@@ -214,7 +235,7 @@ void loop() {
         
         }
       }
-    else if (int(dag) == 5 || int(dag) == 12 || int(dag) == 19 || int(dag) == 26 || int(dag) == 33 || int(dag) == 40 || int(dag) == 47) { 
+    else if (int(dag) == 5) { 
       if (Zaterdag_Boiler == true) {
         
         }
@@ -228,7 +249,7 @@ void loop() {
         
         }
       }
-    else if (int(dag) == 6 || int(dag) == 13 || int(dag) == 20 || int(dag) == 27 || int(dag) == 34 || int(dag) == 41 || int(dag) == 48) { 
+    else if (int(dag) == 6) { 
       if (Zondag_Boiler == true) {
         
         }
@@ -414,11 +435,8 @@ void loop() {
     else if (Zondag_Vaatwas == true) {
       
       }    
-    }  
-  batterijspanning();
-  spanningzon();
-  stroomsensor();  
-  opladen_batterij();
+    }   
+  //opladen_batterij();
   
 }
 
@@ -948,5 +966,11 @@ void net_Vaatwas() {
 void datum() {
     tijd = millis();
     uur = tijd / 2500;
-    dag = uur / 24;          
+    if (uur >= 24.0){
+      uur = uur - 24.0;
+      dag = dag + 1.0;
+      if (dag > 7.0) {
+        dag = 0.0;
+        }
+      }         
     }
