@@ -66,10 +66,10 @@ const int pinS1_1 = 4;
 
 const int pinZ_2 = 5; 
 const int pinS0_2 = 8;
-const int pinS1_2 = 10;
+const int pinS1_2 = 7;
 
 const int pinZ_3 = 6; 
-const int pinS0_3 = 7;
+const int pinS0_3 = 10;
 const int pinS1_3 = 11;
 
 const int pinZ_4 = 9; 
@@ -909,18 +909,18 @@ void zon_Boiler() {
   }
 
 void zon_Fornuis() {
-  digitalWrite(pinS0_1, LOW);
-  digitalWrite(pinS1_1, HIGH);
+  digitalWrite(pinS0_4, LOW);
+  digitalWrite(pinS1_4, HIGH);
   }
 
 void zon_Lichten() {
-  digitalWrite(pinS0_1, LOW);
-  digitalWrite(pinS1_1, HIGH);
+  digitalWrite(pinS0_3, LOW);
+  digitalWrite(pinS1_3, HIGH);
   }
 
 void zon_Vaatwas() {
-  digitalWrite(pinS0_1, LOW);
-  digitalWrite(pinS1_1, HIGH);
+  digitalWrite(pinS0_2, LOW);
+  digitalWrite(pinS1_2, HIGH);
   }
 
 void batt_Boiler() {
@@ -929,18 +929,18 @@ void batt_Boiler() {
   }
 
 void batt_Fornuis() {
-  digitalWrite(pinS0_1, LOW);
-  digitalWrite(pinS1_1, LOW);
+  digitalWrite(pinS0_4, LOW);
+  digitalWrite(pinS1_4, LOW);
   }
 
 void batt_Lichten() {
-  digitalWrite(pinS0_1, LOW);
-  digitalWrite(pinS1_1, LOW);
+  digitalWrite(pinS0_3, LOW);
+  digitalWrite(pinS1_3, LOW);
   }
 
 void batt_Vaatwas() {
-  digitalWrite(pinS0_1, LOW);
-  digitalWrite(pinS1_1, LOW);
+  digitalWrite(pinS0_2, LOW);
+  digitalWrite(pinS1_2, LOW);
   }
 
 void net_Boiler() {
@@ -949,18 +949,38 @@ void net_Boiler() {
   }
 
 void net_Fornuis() {
-  digitalWrite(pinS0_1, HIGH);
-  digitalWrite(pinS1_1, LOW);
+  digitalWrite(pinS0_4, HIGH);
+  digitalWrite(pinS1_4, LOW);
   }
 
 void net_Lichten() {
-  digitalWrite(pinS0_1, HIGH);
-  digitalWrite(pinS1_1, LOW);
+  digitalWrite(pinS0_3, HIGH);
+  digitalWrite(pinS1_3, LOW);
   }
 
 void net_Vaatwas() {
+  digitalWrite(pinS0_2, HIGH);
+  digitalWrite(pinS1_2, LOW);
+  }
+  
+void uit_Boiler() {
   digitalWrite(pinS0_1, HIGH);
-  digitalWrite(pinS1_1, LOW);
+  digitalWrite(pinS1_1, HIGH);
+  }
+
+void uit_Fornuis() {
+  digitalWrite(pinS0_4, HIGH);
+  digitalWrite(pinS1_4, HIGH);
+  }
+
+void uit_Lichten() {
+  digitalWrite(pinS0_3, HIGH);
+  digitalWrite(pinS1_3, HIGH);
+  }
+
+void uit_Vaatwas() {
+  digitalWrite(pinS0_2, HIGH);
+  digitalWrite(pinS1_2, HIGH);
   }
   
 void datum() {
