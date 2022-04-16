@@ -29,6 +29,16 @@ class _MyhomepageState extends State<Myhomepage> {
             Spacer(), //plaats tussen de knoppen optie en menu
             IconButton(
               //de menu knop in de navigatiebalk
+              icon: Icon(
+                Icons.home_outlined,
+                size: 35,
+              ),
+              onPressed: () {},
+              splashColor: Colors.blue,
+            ),
+            Spacer(),
+            IconButton(
+              //de menu knop in de navigatiebalk
               icon: Icon(Icons.menu),
               onPressed: () {},
               splashColor: Colors.blue,
@@ -36,16 +46,6 @@ class _MyhomepageState extends State<Myhomepage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        //dit is de home knop
-        child: Icon(
-          Icons.home_outlined,
-          color: Colors.black,
-        ),
-        onPressed: () {},
-        splashColor: Colors.blue,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: responsivelayout(
         tabletbody: Mytablethome(),
         mobilebody: Mymobilehome(),

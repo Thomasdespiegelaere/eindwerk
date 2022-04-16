@@ -22,14 +22,6 @@ class _MymobilehomeState extends State<Mymobilehome> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/smart-home-automation-2.jpg"),
-          fit: BoxFit.cover,
-          colorFilter: new ColorFilter.mode(
-              Colors.black.withOpacity(0.2), BlendMode.dstATop),
-        ),
-      ),
       child: Column(
         //dit is de layout van de app zelf
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -46,30 +38,24 @@ class _MymobilehomeState extends State<Mymobilehome> {
               SizedBox(
                 width: 200,
                 height: 150,
-                child: Container(
-                  //container rond de knoppen om de kleuren te laten uitkomen
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Colors.blue,
-                          Colors.green,
-                        ],
-                      )),
-                  child: ElevatedButton(
-                    //knop om naar de weekplanning te gaan
-                    child: Text("Weekplanning"),
-                    onPressed: this.click,
-                    style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(81, 190, 205, 100),
-                        onPrimary: Colors.white,
-                        shadowColor: Colors.blue,
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
+                child: ElevatedButton.icon(
+                  //knop om naar de weekplanning te gaan
+                  icon: Icon(
+                    Icons.calendar_today_rounded,
+                    color: Color.fromARGB(255, 2, 195, 221),
+                    size: 40,
                   ),
+                  label: Text(
+                    "Weekplanning",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 2, 195, 221), fontSize: 17),
+                  ),
+                  onPressed: this.click,
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(30, 30, 30, 1),
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20))),
                 ),
               ),
               SizedBox(
@@ -79,30 +65,24 @@ class _MymobilehomeState extends State<Mymobilehome> {
               SizedBox(
                 width: 200,
                 height: 150,
-                child: Container(
-                  //container rond de knoppen om de kleuren te laten uitkomen
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Colors.blue,
-                          Colors.green,
-                        ],
-                      )),
-                  child: ElevatedButton(
-                    //knop om naar de gegevens te gaan
-                    child: Text("Gegevens"),
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(81, 190, 205, 100),
-                        onPrimary: Colors.white,
-                        shadowColor: Colors.blue,
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
+                child: ElevatedButton.icon(
+                  //knop om naar de gegevens te gaan
+                  icon: Icon(
+                    Icons.query_stats,
+                    color: Color.fromARGB(255, 2, 195, 221),
+                    size: 40,
                   ),
+                  label: Text(
+                    "Gegevens",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 2, 195, 221), fontSize: 17),
+                  ),
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromRGBO(30, 30, 30, 1),
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20))),
                 ),
               ),
               SizedBox(

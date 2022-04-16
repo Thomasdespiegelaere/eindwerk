@@ -32,6 +32,16 @@ class _WeekplanningState extends State<Weekplanning> {
               ),
               Spacer(),
               IconButton(
+                //de menu knop in de navigatiebalk
+                icon: Icon(
+                  Icons.home_outlined,
+                  size: 35,
+                ),
+                onPressed: this.click,
+                splashColor: Colors.blue,
+              ),
+              Spacer(),
+              IconButton(
                 icon: Icon(Icons.menu),
                 onPressed: () {},
                 splashColor: Colors.blue,
@@ -39,15 +49,6 @@ class _WeekplanningState extends State<Weekplanning> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(
-            Icons.home_outlined,
-            color: Colors.black,
-          ),
-          onPressed: this.click,
-          splashColor: Colors.blue,
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: responsivelayout(
           tabletbody: MytabletWeekplanning(),
           mobilebody: MymobileWeekplanning(),

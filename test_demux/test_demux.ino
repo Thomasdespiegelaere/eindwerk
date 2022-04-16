@@ -34,19 +34,19 @@ void setup() {
 }
 
 void loop() {
-  digitalWrite(pinS0_1, LOW);
-  digitalWrite(pinS1_1, HIGH);
+  digitalWrite(pinS0_1, HIGH);
+  digitalWrite(pinS1_1, LOW);
   digitalWrite(pinZ_1, 255);
 
-  digitalWrite(pinS0_2, LOW);
-  digitalWrite(pinS1_2, HIGH);
+  digitalWrite(pinS0_2, HIGH);
+  digitalWrite(pinS1_2, LOW);
   digitalWrite(pinZ_2, 255);
 
-  digitalWrite(pinS0_3, LOW);
-  digitalWrite(pinS1_3, HIGH);
+  digitalWrite(pinS0_3, HIGH);
+  digitalWrite(pinS1_3, LOW);
   analogWrite(pinZ_3, 255);
 
   digitalWrite(pinS0_4, HIGH);
   digitalWrite(pinS1_4, LOW);
-  digitalWrite(pinZ_4, 255);
+  analogWrite(pinZ_4, 255);
 }

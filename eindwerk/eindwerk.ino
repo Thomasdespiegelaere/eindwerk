@@ -1255,7 +1255,9 @@ void batterijspanning() {
   else if (batt_voltage < 11.92) {
     batterij_level = 0;
     }
-  delay(1000);
+  delay(500);
+  Serial.print("batt: ");
+  Serial.println(batterij_level);
   EEPROM.put(29, batterij_level);
 }
 
