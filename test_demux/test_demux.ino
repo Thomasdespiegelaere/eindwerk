@@ -14,6 +14,8 @@ const int pinZ_4 = 9;
 const int pinS0_4 = 12;
 const int pinS1_4 = 13;
 
+const int pinz = A3;
+
 void setup() {
   pinMode(pinZ_1, OUTPUT);
   pinMode(pinS0_1, OUTPUT);
@@ -29,24 +31,28 @@ void setup() {
 
   pinMode(pinZ_4, OUTPUT);
   pinMode(pinS0_4, OUTPUT);
-  pinMode(pinS1_4, OUTPUT);  
+  pinMode(pinS1_4, OUTPUT); 
+
+  pinMode(pinz, OUTPUT);
 
 }
 
 void loop() {
-  digitalWrite(pinS0_1, HIGH);
-  digitalWrite(pinS1_1, LOW);
+  digitalWrite(pinS0_1, LOW);
+  digitalWrite(pinS1_1, HIGH);
   digitalWrite(pinZ_1, 255);
 
-  digitalWrite(pinS0_2, HIGH);
-  digitalWrite(pinS1_2, LOW);
+  digitalWrite(pinS0_2, LOW);
+  digitalWrite(pinS1_2, HIGH);
   digitalWrite(pinZ_2, 255);
 
-  digitalWrite(pinS0_3, HIGH);
-  digitalWrite(pinS1_3, LOW);
+  digitalWrite(pinS0_3, LOW);
+  digitalWrite(pinS1_3, HIGH);
   analogWrite(pinZ_3, 255);
 
-  digitalWrite(pinS0_4, HIGH);
-  digitalWrite(pinS1_4, LOW);
+  digitalWrite(pinS0_4, LOW);
+  digitalWrite(pinS1_4, HIGH);
   analogWrite(pinZ_4, 255);
+
+  analogWrite(pinz, 255);
 }

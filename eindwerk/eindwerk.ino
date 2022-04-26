@@ -167,13 +167,16 @@ void loop() {
           if (Dinsdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
+              Serial.println("lichten din");
               }            
             }
          }
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
-            zon_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0 ){
+            zon_Vaatwas();
+            }            
+           }
          }
         x = x + 1;
        }
@@ -203,8 +206,10 @@ void loop() {
          }
         else if (x == 3){
           if (Donderdag_Vaatwas == true) {
-            zon_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0){
+            zon_Vaatwas();  
+            }          
+           }
          }
         x = x + 1;
        }
@@ -234,8 +239,10 @@ void loop() {
          }
         else if (x == 3){
           if (Maandag_Vaatwas == true) {
-            zon_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0) {
+            zon_Vaatwas();
+            }            
+           }
          }
         x = x + 1;
        }
@@ -265,8 +272,10 @@ void loop() {
          }
         else if (x == 3){
           if (Vrijdag_Vaatwas == true) {
-            zon_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0) {
+            zon_Vaatwas();  
+            }          
+           }
          }
         x = x + 1;
        }
@@ -296,8 +305,10 @@ void loop() {
          }
         else if (x == 3){
           if (Woensdag_Vaatwas == true) {
-            zon_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0) {
+            zon_Vaatwas();       
+            }     
+           }
          }
         x = x + 1;
        }
@@ -327,8 +338,10 @@ void loop() {
          }
         else if (x == 3){
           if (Zaterdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {
             zon_Vaatwas();            
             }
+           }
          }
         x = x + 1;
        }
@@ -357,9 +370,11 @@ void loop() {
             }
          }
         else if (x == 3){
-          if (Zondag_Vaatwas == true) {
-            zon_Vaatwas();            
-            }
+          if (Zondag_Vaatwas == true) { 
+            if (uur >= 20.0 && uur <= 22.0) {
+            zon_Vaatwas();
+            }            
+           }
          }
         x = x + 1;
        }
@@ -392,8 +407,10 @@ void loop() {
          }
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {
             batt_Vaatwas();            
             }
+           }
          }
         x = x + 1;
        }
@@ -423,8 +440,10 @@ void loop() {
          }
         else if (x == 3){
           if (Donderdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {
             batt_Vaatwas();            
             }
+           }
          }
         x = x + 1;
        }
@@ -454,8 +473,10 @@ void loop() {
          }
         else if (x == 3){
           if (Maandag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {
             batt_Vaatwas();            
             }
+           }
          }
         x = x + 1;
        }
@@ -485,8 +506,10 @@ void loop() {
          }
         else if (x == 3){
           if (Vrijdag_Vaatwas == true) {
-            batt_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0) {
+            batt_Vaatwas(); 
+            }           
+           }
          }
         x = x + 1;
        }
@@ -516,8 +539,10 @@ void loop() {
          }
         else if (x == 3){
           if (Woensdag_Vaatwas == true) {
-            batt_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0) {
+            batt_Vaatwas(); 
+            }           
+           }
          }
         x = x + 1;
        }
@@ -547,8 +572,10 @@ void loop() {
          }
         else if (x == 3){
           if (Zaterdag_Vaatwas == true) {
-            batt_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0) {
+            batt_Vaatwas(); 
+            }           
+           }
          }
         x = x + 1;
        }
@@ -798,6 +825,225 @@ void loop() {
         else if (x == 3){
           if (Zondag_Vaatwas == true) {
             net_Vaatwas();            
+            }
+         }
+        x = x + 1;
+       }
+      }    
+    }
+    else if (zon_voltage > 12.0 && batterij_level > 50){
+    if (int(dag) == 1) { // dinsdag selectie
+      for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
+        if (x == 0){
+          if (Dinsdag_Boiler == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Boiler(); 
+              }                                                   
+            }
+         }
+        else if (x == 1) {
+          if (Dinsdag_Fornuis == true) { 
+            if (uur >= 18.0 && uur <= 20.0 ){
+              batt_Fornuis();
+              }            
+            }
+         }
+        else if (x == 2) {
+          if (Dinsdag_Lichten == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Lichten();
+              }            
+            }
+         }
+        else if (x == 3){
+          if (Dinsdag_Vaatwas == true) {
+            batt_Vaatwas();            
+            }
+         }
+        x = x + 1;
+       }
+      }
+    else if (int(dag) == 3) {      //donderdag selectie
+      for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
+        if (x == 0){
+          if (Donderdag_Boiler == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Boiler(); 
+              }                                                   
+            }
+         }
+        else if (x == 1) {
+          if (Donderdag_Fornuis == true) { 
+            if (uur >= 18.0 && uur <= 20.0 ){
+              batt_Fornuis();
+              }            
+            }
+         }
+        else if (x == 2) {
+          if (Donderdag_Lichten == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Lichten();
+              }            
+            }
+         }
+        else if (x == 3){
+          if (Donderdag_Vaatwas == true) {
+            batt_Vaatwas();            
+            }
+         }
+        x = x + 1;
+       }
+      }
+    else if (int(dag) == 0) { //maandag selectie
+      for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
+        if (x == 0){
+          if (Maandag_Boiler == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Boiler(); 
+              }                                                   
+            }
+         }
+        else if (x == 1) {
+          if (Maandag_Fornuis == true) { 
+            if (uur >= 18.0 && uur <= 20.0 ){
+              batt_Fornuis();
+              }            
+            }
+         }
+        else if (x == 2) {
+          if (Maandag_Lichten == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Lichten();
+              }            
+            }
+         }
+        else if (x == 3){
+          if (Maandag_Vaatwas == true) {
+            batt_Vaatwas();            
+            }
+         }
+        x = x + 1;
+       }
+      }  
+    else if (int(dag) == 4) { //vrijdag selectie
+      for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
+        if (x == 0){
+          if (Vrijdag_Boiler == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Boiler(); 
+              }                                                   
+            }
+         }
+        else if (x == 1) {
+          if (Vrijdag_Fornuis == true) { 
+            if (uur >= 18.0 && uur <= 20.0 ){
+              batt_Fornuis();
+              }            
+            }
+         }
+        else if (x == 2) {
+          if (Vrijdag_Lichten == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Lichten();
+              }            
+            }
+         }
+        else if (x == 3){
+          if (Vrijdag_Vaatwas == true) {
+            batt_Vaatwas();            
+            }
+         }
+        x = x + 1;
+       }
+       }
+    else if (int(dag) == 2) {      //woensdag selectie 
+      for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
+        if (x == 0){
+          if (Woensdag_Boiler == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Boiler(); 
+              }                                                   
+            }
+         }
+        else if (x == 1) {
+          if (Woensdag_Fornuis == true) { 
+            if (uur >= 18.0 && uur <= 20.0 ){
+              batt_Fornuis();
+              }            
+            }
+         }
+        else if (x == 2) {
+          if (Woensdag_Lichten == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Lichten();
+              }            
+            }
+         }
+        else if (x == 3){
+          if (Woensdag_Vaatwas == true) {
+            batt_Vaatwas();            
+            }
+         }
+        x = x + 1;
+       }
+      }
+    else if (int(dag) == 5) { //zaterdag selectie
+      for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
+        if (x == 0){
+          if (Zaterdag_Boiler == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Boiler(); 
+              }                                                   
+            }
+         }
+        else if (x == 1) {
+          if (Zaterdag_Fornuis == true) { 
+            if (uur >= 18.0 && uur <= 20.0 ){
+              batt_Fornuis();
+              }            
+            }
+         }
+        else if (x == 2) {
+          if (Zaterdag_Lichten == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Lichten();
+              }            
+            }
+         }
+        else if (x == 3){
+          if (Zaterdag_Vaatwas == true) {
+            batt_Vaatwas();            
+            }
+         }
+        x = x + 1;
+       }
+      }
+    else if (int(dag) == 6) { // zondag selectie
+      for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
+        if (x == 0){
+          if (Zondag_Boiler == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Boiler(); 
+              }                                                   
+            }
+         }
+        else if (x == 1) {
+          if (Zondag_Fornuis == true) { 
+            if (uur >= 18.0 && uur <= 20.0 ){
+              batt_Fornuis();
+              }            
+            }
+         }
+        else if (x == 2) {
+          if (Zondag_Lichten == true) {
+            if (uur >= 7.0 && uur <= 23.0 ){
+              zon_Lichten();
+              }            
+            }
+         }
+        else if (x == 3){
+          if (Zondag_Vaatwas == true) {
+            batt_Vaatwas();            
             }
          }
         x = x + 1;
@@ -1185,6 +1431,8 @@ void spanningzon() {
   adc_voltage_zon  = (adc_value_zon * 5.0 ) / 1023.0;  
   zon_voltage = (adc_voltage_zon / 0.2) + 0.17 ;
   delay(1000);
+  Serial.print("zon: ");
+  Serial.println(zon_voltage);
   }
 
 void batterijspanning() {
@@ -1276,31 +1524,37 @@ void opladen_batterij() {
 void zon_Boiler() {
   digitalWrite(pinS0_1, LOW);
   digitalWrite(pinS1_1, HIGH);
+  analogWrite(pinZ_1, 255);
   }
 
 void zon_Fornuis() {
   digitalWrite(pinS0_4, LOW);
   digitalWrite(pinS1_4, HIGH);
+  analogWrite(pinZ_4, 255);
   }
 
 void zon_Lichten() {
   digitalWrite(pinS0_3, LOW);
   digitalWrite(pinS1_3, HIGH);
+  analogWrite(pinZ_3, 255);
   }
 
 void zon_Vaatwas() {
   digitalWrite(pinS0_2, LOW);
   digitalWrite(pinS1_2, HIGH);
+  analogWrite(pinZ_2, 20);
   }
 
 void batt_Boiler() {
   digitalWrite(pinS0_1, LOW);
   digitalWrite(pinS1_1, LOW);
+  analogWrite(pinZ_1, 255);
   }
 
 void batt_Fornuis() {
   digitalWrite(pinS0_4, LOW);
   digitalWrite(pinS1_4, LOW);
+  analogWrite(pinZ_4, 255);
   }
 
 void batt_Lichten() {
@@ -1312,46 +1566,55 @@ void batt_Lichten() {
 void batt_Vaatwas() {
   digitalWrite(pinS0_2, LOW);
   digitalWrite(pinS1_2, LOW);
+  analogWrite(pinZ_2, 20);
   }
 
 void net_Boiler() {
   digitalWrite(pinS0_1, HIGH);
   digitalWrite(pinS1_1, LOW);
+  analogWrite(pinZ_1, 255);
   }
 
 void net_Fornuis() {
   digitalWrite(pinS0_4, HIGH);
   digitalWrite(pinS1_4, LOW);
+  analogWrite(pinZ_4, 255);
   }
 
 void net_Lichten() {
   digitalWrite(pinS0_3, HIGH);
   digitalWrite(pinS1_3, LOW);
+  analogWrite(pinZ_3, 255);
   }
 
 void net_Vaatwas() {
   digitalWrite(pinS0_2, HIGH);
   digitalWrite(pinS1_2, LOW);
+  analogWrite(pinZ_2, 20);
   }
   
 void uit_Boiler() {
   digitalWrite(pinS0_1, HIGH);
   digitalWrite(pinS1_1, HIGH);
+  analogWrite(pinZ_1, 0);
   }
 
 void uit_Fornuis() {
   digitalWrite(pinS0_4, HIGH);
   digitalWrite(pinS1_4, HIGH);
+  analogWrite(pinZ_4, 0);
   }
 
 void uit_Lichten() {
   digitalWrite(pinS0_3, HIGH);
   digitalWrite(pinS1_3, HIGH);
+  analogWrite(pinZ_3, 0);
   }
 
 void uit_Vaatwas() {
   digitalWrite(pinS0_2, HIGH);
   digitalWrite(pinS1_2, HIGH);
+  analogWrite(pinZ_2, 0);
   }
   
 void datum() {
@@ -1365,5 +1628,7 @@ void datum() {
         }
       } 
     Serial.print("dag: "); 
-    Serial.println(dag);        
+    Serial.println(dag);
+    Serial.print("uur: ");
+    Serial.println(uur);        
     }
