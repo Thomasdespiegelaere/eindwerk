@@ -70,9 +70,9 @@ const int pinS1_2 = 7;
 
 const int pinZ_3 = 6; 
 const int pinS0_3 = 10;
-const int pinS1_3 = 11;
+const int pinS1_3 = 9;
 
-const int pinZ_4 = 9; 
+const int pinZ_4 = 11; 
 const int pinS0_4 = 12;
 const int pinS1_4 = 13;
 
@@ -1051,7 +1051,7 @@ void loop() {
       }    
     }   
   //opladen_batterij();
-  
+  //grafiek_data();
 }
 
 void Weekplanning() {
@@ -1528,9 +1528,7 @@ void zon_Boiler() {
   }
 
 void zon_Fornuis() {
-  digitalWrite(pinS0_4, LOW);
-  digitalWrite(pinS1_4, HIGH);
-  analogWrite(pinZ_4, 255);
+  digitalWrite(pinZ_4, HIGH);
   }
 
 void zon_Lichten() {
@@ -1552,9 +1550,7 @@ void batt_Boiler() {
   }
 
 void batt_Fornuis() {
-  digitalWrite(pinS0_4, LOW);
-  digitalWrite(pinS1_4, LOW);
-  analogWrite(pinZ_4, 255);
+  digitalWrite(pinS1_4, HIGH);
   }
 
 void batt_Lichten() {
@@ -1577,8 +1573,6 @@ void net_Boiler() {
 
 void net_Fornuis() {
   digitalWrite(pinS0_4, HIGH);
-  digitalWrite(pinS1_4, LOW);
-  analogWrite(pinZ_4, 255);
   }
 
 void net_Lichten() {
@@ -1600,8 +1594,8 @@ void uit_Boiler() {
   }
 
 void uit_Fornuis() {
-  digitalWrite(pinS0_4, HIGH);
-  digitalWrite(pinS1_4, HIGH);
+  digitalWrite(pinS0_4, LOW);
+  digitalWrite(pinS1_4, LOW);
   analogWrite(pinZ_4, 0);
   }
 

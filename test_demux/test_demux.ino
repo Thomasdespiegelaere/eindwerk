@@ -8,9 +8,9 @@ const int pinS1_2 = 7;
 
 const int pinZ_3 = 6; 
 const int pinS0_3 = 10;
-const int pinS1_3 = 11;
+const int pinS1_3 = 9;
 
-const int pinZ_4 = 9; 
+const int pinZ_4 = 11; 
 const int pinS0_4 = 12;
 const int pinS1_4 = 13;
 
@@ -52,7 +52,7 @@ void loop() {
 
   digitalWrite(pinS0_4, LOW);
   digitalWrite(pinS1_4, HIGH);
-  analogWrite(pinZ_4, 255);
+  digitalWrite(pinZ_4, HIGH);
 
   analogWrite(pinz, 255);
 }

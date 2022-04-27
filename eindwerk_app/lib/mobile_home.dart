@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:eindwerk_app/Weekplanning.dart';
 import 'package:flutter/services.dart';
+import 'package:eindwerk_app/gegevens.dart';
 
 class Mymobilehome extends StatefulWidget {
   //de homepagina class
@@ -16,6 +17,14 @@ class _MymobilehomeState extends State<Mymobilehome> {
         //verplaats de weekplanning pagina naar de bovenkant van de stapel met pagina's
         context,
         MaterialPageRoute(builder: (context) => Weekplanning()));
+  }
+
+  void geg() {
+    //de functie wanneer de knop van weekplanning wordt ingedrukt
+    Navigator.push(
+        //verplaats de weekplanning pagina naar de bovenkant van de stapel met pagina's
+        context,
+        MaterialPageRoute(builder: (context) => Mygegevenspage()));
   }
 
   @override
@@ -77,7 +86,7 @@ class _MymobilehomeState extends State<Mymobilehome> {
                     style: TextStyle(
                         color: Color.fromARGB(255, 2, 195, 221), fontSize: 17),
                   ),
-                  onPressed: () {},
+                  onPressed: this.geg,
                   style: ElevatedButton.styleFrom(
                       primary: Color.fromRGBO(30, 30, 30, 1),
                       elevation: 10,
