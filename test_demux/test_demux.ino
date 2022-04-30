@@ -1,58 +1,55 @@
-const int pinZ_1 = 3; 
-const int pinS0_1 = 2;
-const int pinS1_1 = 4;
+const int Boiler_zon = 2; 
+const int Boiler_net = 3;
+const int Boiler_batt = 4;
 
-const int pinZ_2 = 5; 
-const int pinS0_2 = 8;
-const int pinS1_2 = 7;
+const int Vaatwas_zon = 9; 
+const int Vaatwas_net = 10;
+const int Vaatwas_batt = 11;
 
-const int pinZ_3 = 6; 
-const int pinS0_3 = 10;
-const int pinS1_3 = 9;
+const int Lichten_zon = 5; 
+const int Lichten_net = 6;
+const int Lichten_batt = 7;
 
-const int pinZ_4 = 11; 
-const int pinS0_4 = 12;
-const int pinS1_4 = 13;
+const int Fornuis_zon = 8; 
+const int Fornuis_net = 12;
+const int Fornuis_batt = 13;
 
-const int pinz = A3;
+const int Mosfet_opladen = A3;
 
 void setup() {
-  pinMode(pinZ_1, OUTPUT);
-  pinMode(pinS0_1, OUTPUT);
-  pinMode(pinS1_1, OUTPUT);
 
-  pinMode(pinZ_2, OUTPUT);
-  pinMode(pinS0_2, OUTPUT);
-  pinMode(pinS1_2, OUTPUT);
+  pinMode(Boiler_zon, OUTPUT);
+  pinMode(Boiler_net, OUTPUT);
+  pinMode(Boiler_batt, OUTPUT);
 
-  pinMode(pinZ_3, OUTPUT);
-  pinMode(pinS0_3, OUTPUT);
-  pinMode(pinS1_3, OUTPUT);
+  pinMode(Vaatwas_zon, OUTPUT);
+  pinMode(Vaatwas_net, OUTPUT);
+  pinMode(Vaatwas_batt, OUTPUT);
 
-  pinMode(pinZ_4, OUTPUT);
-  pinMode(pinS0_4, OUTPUT);
-  pinMode(pinS1_4, OUTPUT); 
+  pinMode(Lichten_zon, OUTPUT);
+  pinMode(Lichten_net, OUTPUT);
+  pinMode(Lichten_batt, OUTPUT);
 
-  pinMode(pinz, OUTPUT);
+  pinMode(Fornuis_zon, OUTPUT);
+  pinMode(Fornuis_net, OUTPUT);
+  pinMode(Fornuis_batt, OUTPUT);
+
+  pinMode(Mosfet_opladen, OUTPUT);
 
 }
 
 void loop() {
-  digitalWrite(pinS0_1, LOW);
-  digitalWrite(pinS1_1, HIGH);
-  digitalWrite(pinZ_1, 255);
-
-  digitalWrite(pinS0_2, LOW);
-  digitalWrite(pinS1_2, HIGH);
-  digitalWrite(pinZ_2, 255);
-
-  digitalWrite(pinS0_3, LOW);
-  digitalWrite(pinS1_3, HIGH);
-  analogWrite(pinZ_3, 255);
-
-  digitalWrite(pinS0_4, LOW);
-  digitalWrite(pinS1_4, HIGH);
-  digitalWrite(pinZ_4, HIGH);
-
-  analogWrite(pinz, 255);
+  digitalWrite(Boiler_zon, HIGH);
+  digitalWrite(Fornuis_zon, HIGH);
+  digitalWrite(Lichten_zon, HIGH);
+  analogWrite(Vaatwas_zon, 20);
+  digitalWrite(Boiler_batt, HIGH);
+  digitalWrite(Fornuis_batt, HIGH);
+  digitalWrite(Lichten_batt, HIGH);
+  analogWrite(Vaatwas_batt, 20);
+  digitalWrite(Boiler_net, HIGH);
+  digitalWrite(Fornuis_net, HIGH);
+  digitalWrite(Lichten_net, HIGH);
+  analogWrite(Vaatwas_net, 20);
+  digitalWrite(Mosfet_opladen, HIGH);
 }

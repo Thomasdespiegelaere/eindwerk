@@ -60,21 +60,21 @@ float gem_ams = 0;
 
 bool var = true;
 
-const int pinZ_1 = 3; 
-const int pinS0_1 = 2;
-const int pinS1_1 = 4;
+const int Boiler_zon = 2; 
+const int Boiler_net = 3;
+const int Boiler_batt = 4;
 
-const int pinZ_2 = 5; 
-const int pinS0_2 = 8;
-const int pinS1_2 = 7;
+const int Vaatwas_zon = 9; 
+const int Vaatwas_net = 10;
+const int Vaatwas_batt = 11;
 
-const int pinZ_3 = 6; 
-const int pinS0_3 = 10;
-const int pinS1_3 = 9;
+const int Lichten_zon = 5; 
+const int Lichten_net = 6;
+const int Lichten_batt = 7;
 
-const int pinZ_4 = 11; 
-const int pinS0_4 = 12;
-const int pinS1_4 = 13;
+const int Fornuis_zon = 8; 
+const int Fornuis_net = 12;
+const int Fornuis_batt = 13;
 
 const int Mosfet_opladen = A3;
 
@@ -123,21 +123,21 @@ void setup() {
 
   EEPROM.get(29, batterij_level);
 
-  pinMode(pinZ_1, OUTPUT);
-  pinMode(pinS0_1, OUTPUT);
-  pinMode(pinS1_1, OUTPUT);
+  pinMode(Boiler_zon, OUTPUT);
+  pinMode(Boiler_net, OUTPUT);
+  pinMode(Boiler_batt, OUTPUT);
 
-  pinMode(pinZ_2, OUTPUT);
-  pinMode(pinS0_2, OUTPUT);
-  pinMode(pinS1_2, OUTPUT);
+  pinMode(Vaatwas_zon, OUTPUT);
+  pinMode(Vaatwas_net, OUTPUT);
+  pinMode(Vaatwas_batt, OUTPUT);
 
-  pinMode(pinZ_3, OUTPUT);
-  pinMode(pinS0_3, OUTPUT);
-  pinMode(pinS1_3, OUTPUT);
+  pinMode(Lichten_zon, OUTPUT);
+  pinMode(Lichten_net, OUTPUT);
+  pinMode(Lichten_batt, OUTPUT);
 
-  pinMode(pinZ_4, OUTPUT);
-  pinMode(pinS0_4, OUTPUT);
-  pinMode(pinS1_4, OUTPUT);
+  pinMode(Fornuis_zon, OUTPUT);
+  pinMode(Fornuis_net, OUTPUT);
+  pinMode(Fornuis_batt, OUTPUT);
 }
 
 void loop() {
@@ -1522,93 +1522,75 @@ void opladen_batterij() {
 }
 
 void zon_Boiler() {
-  digitalWrite(pinS0_1, LOW);
-  digitalWrite(pinS1_1, HIGH);
-  analogWrite(pinZ_1, 255);
+  digitalWrite(Boiler_zon, HIGH);
   }
 
 void zon_Fornuis() {
-  digitalWrite(pinZ_4, HIGH);
+  digitalWrite(Fornuis_zon, HIGH);
   }
 
 void zon_Lichten() {
-  digitalWrite(pinS0_3, LOW);
-  digitalWrite(pinS1_3, HIGH);
-  analogWrite(pinZ_3, 255);
+  digitalWrite(Lichten_zon, HIGH);
   }
 
 void zon_Vaatwas() {
-  digitalWrite(pinS0_2, LOW);
-  digitalWrite(pinS1_2, HIGH);
-  analogWrite(pinZ_2, 20);
+  analogWrite(Vaatwas_zon, 20);
   }
 
 void batt_Boiler() {
-  digitalWrite(pinS0_1, LOW);
-  digitalWrite(pinS1_1, LOW);
-  analogWrite(pinZ_1, 255);
+  digitalWrite(Boiler_batt, HIGH);
   }
 
 void batt_Fornuis() {
-  digitalWrite(pinS1_4, HIGH);
+  digitalWrite(Fornuis_batt, HIGH);
   }
 
 void batt_Lichten() {
-  digitalWrite(pinS0_3, LOW);
-  digitalWrite(pinS1_3, LOW);
-  analogWrite(pinZ_3, 255);
+  digitalWrite(Lichten_batt, HIGH);
   }
 
 void batt_Vaatwas() {
-  digitalWrite(pinS0_2, LOW);
-  digitalWrite(pinS1_2, LOW);
-  analogWrite(pinZ_2, 20);
+  analogWrite(Vaatwas_batt, 20);
   }
 
 void net_Boiler() {
-  digitalWrite(pinS0_1, HIGH);
-  digitalWrite(pinS1_1, LOW);
-  analogWrite(pinZ_1, 255);
+  digitalWrite(Boiler_net, HIGH);
   }
 
 void net_Fornuis() {
-  digitalWrite(pinS0_4, HIGH);
+  digitalWrite(Fornuis_net, HIGH);
   }
 
 void net_Lichten() {
-  digitalWrite(pinS0_3, HIGH);
-  digitalWrite(pinS1_3, LOW);
-  analogWrite(pinZ_3, 255);
+  digitalWrite(Lichten_net, HIGH);
   }
 
 void net_Vaatwas() {
-  digitalWrite(pinS0_2, HIGH);
-  digitalWrite(pinS1_2, LOW);
-  analogWrite(pinZ_2, 20);
+  analogWrite(Vaatwas_net, 20);
   }
   
 void uit_Boiler() {
-  digitalWrite(pinS0_1, HIGH);
-  digitalWrite(pinS1_1, HIGH);
-  analogWrite(pinZ_1, 0);
+  digitalWrite(Boiler_net, LOW);
+  digitalWrite(Boiler_batt, LOW);
+  digitalWrite(Boiler_zon, LOW);
   }
 
 void uit_Fornuis() {
-  digitalWrite(pinS0_4, LOW);
-  digitalWrite(pinS1_4, LOW);
-  analogWrite(pinZ_4, 0);
+  digitalWrite(Fornuis_net, LOW);
+  digitalWrite(Fornuis_batt, LOW);
+  digitalWrite(Fornuis_zon, LOW);
   }
 
 void uit_Lichten() {
-  digitalWrite(pinS0_3, HIGH);
-  digitalWrite(pinS1_3, HIGH);
-  analogWrite(pinZ_3, 0);
+  digitalWrite(Lichten_net, LOW);
+  digitalWrite(Lichten_batt, LOW);
+  digitalWrite(Lichten_zon, LOW);
   }
 
 void uit_Vaatwas() {
-  digitalWrite(pinS0_2, HIGH);
-  digitalWrite(pinS1_2, HIGH);
-  analogWrite(pinZ_2, 0);
+  analogWrite(Vaatwas_net, 0);
+  analogWrite(Vaatwas_batt, 0);
+  analogWrite(Vaatwas_zon, 0);
   }
   
 void datum() {
