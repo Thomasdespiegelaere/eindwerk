@@ -167,7 +167,6 @@ void loop() {
           if (Dinsdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              Serial.println("lichten din");
               }            
             }
          }
@@ -400,7 +399,6 @@ void loop() {
         else if (x == 2) {
           if (Dinsdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
-              Serial.println("lichten aan");
               batt_Lichten();
               }            
             }
@@ -1051,7 +1049,7 @@ void loop() {
       }    
     }   
   //opladen_batterij();
-  //grafiek_data();
+  grafiek_data();
 }
 
 void Weekplanning() {
@@ -1430,9 +1428,7 @@ void spanningzon() {
   adc_value_zon = analogRead(pinA1);
   adc_voltage_zon  = (adc_value_zon * 5.0 ) / 1023.0;  
   zon_voltage = (adc_voltage_zon / 0.2) + 0.17 ;
-  delay(1000);
-  Serial.print("zon: ");
-  Serial.println(zon_voltage);
+  delay(10);
   }
 
 void batterijspanning() {
@@ -1504,8 +1500,6 @@ void batterijspanning() {
     batterij_level = 0;
     }
   delay(500);
-  Serial.print("batt: ");
-  Serial.println(batterij_level);
   EEPROM.put(29, batterij_level);
 }
 
@@ -1602,9 +1596,17 @@ void datum() {
       if (dag >= 7.0) {
         dag = 0.0;
         }
-      } 
-    Serial.print("dag: "); 
-    Serial.println(dag);
-    Serial.print("uur: ");
-    Serial.println(uur);        
+      }      
     }
+void grafiek_data() {
+    delay(10);
+    Serial.println("data");
+    Serial.println('>');
+    Serial.println(dag);
+    Serial.println('>');
+    Serial.println(uur);
+    Serial.println('>');
+    Serial.println(zon_voltage);
+    Serial.println('>');
+    Serial.println(batt_voltage);
+  }

@@ -14,8 +14,7 @@ default_app = firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://eindwerk-ba782-default-rtdb.europe-west1.firebasedatabase.app/' # stel de database url in
 	})
 while True:
-    #ref = db.reference("/Dagen/Maandag") # initialiseer de database root voor ref
-    #maandag = ref.update({"Fornuis":True})   #update de waarde van de database
+    ref = db.reference("/Data") # initialiseer de database root voor ref
     database = db.reference("/Dagen").get() # haal de waarden af van database root dagen
     reset = db.reference("/reset").get()
 
@@ -78,12 +77,45 @@ while True:
                 while ser.readline().decode('utf-8').strip() != '>': # ga pas verder als arduino een > stuurt
                     continue
                 aanpasingen = str(verandering)
-                ser.write(aanpasingen.encode('utf-8')) #stuur verandering door naar de arduino                            
-                #print(verschil)  # print waar het verschil zit
-                #print(verandering)  # print de verandering van de database  
-            break
+                ser.write(aanpasingen.encode('utf-8')) #stuur verandering door naar de arduino
+            while ser.readline().decode('utf-8').strip() != 'data':
+                continue
+            while ser.readline().decode('utf-8').strip() != '>':
+                continue
+            dag = ser.readline().decode('utf-8').strip()
+            while ser.readline().decode('utf-8').strip() != '>':
+                continue
+            uur = ser.readline().decode('utf-8').strip()
+            while ser.readline().decode('utf-8').strip() != '>':
+                continue
+            zon_voltage = ser.readline().decode('utf-8').strip()
+            while ser.readline().decode('utf-8').strip() != '>':
+                continue
+            batt_voltage = ser.readline().decode('utf-8').strip()
+            ref.update({"Dag":dag})   #update de waarde van de database
+            ref.update({"uur":uur})
+            ref.update({"zon":zon_voltage})
+            ref.update({"batt":batt_voltage})
         elif (reset == True):
             ser.write('normale weekplanning'.encode('utf-8'))
+            while ser.readline().decode('utf-8').strip() != 'data':
+                continue
+            while ser.readline().decode('utf-8').strip() != '>':
+                continue
+            dag = ser.readline().decode('utf-8').strip()
+            while ser.readline().decode('utf-8').strip() != '>':
+                continue
+            uur = ser.readline().decode('utf-8').strip()
+            while ser.readline().decode('utf-8').strip() != '>':
+                continue
+            zon_voltage = ser.readline().decode('utf-8').strip()
+            while ser.readline().decode('utf-8').strip() != '>':
+                continue
+            batt_voltage = ser.readline().decode('utf-8').strip()
+            ref.update({"Dag":dag})   #update de waarde van de database
+            ref.update({"uur":uur})
+            ref.update({"zon":zon_voltage})
+            ref.update({"batt":batt_voltage})
     else:
         print("geen aanpasingen")
 
