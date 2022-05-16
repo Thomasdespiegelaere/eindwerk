@@ -21,50 +21,79 @@ class _MymobilegegevensState extends State<Mymobilegegevens> {
   final database = FirebaseDatabase.instance.ref();
   //de pagina zelf
 
-  bool vis = true;
-  bool vis1 = true;
-  int time = 25;
-  String z = "";
+  String X0 = "";
+  String Y0 = "";
+  String Y1 = "";
+  bool list = true;
+  double time = 0;
+
   void _updateDataSource(Timer timer) {
     final root = database.child('/');
-    root.child('Data/zon/').get().then((DataSnapshot snapshot) {
-      setState(() {
-        z = snapshot.value;
-      });
+    root.child('Data/uur/').get().then((DataSnapshot snapshot) {
+      if (mounted) {
+        setState(() {
+          X0 = snapshot.value;
+        });
+      }
     });
+    root.child('Data/zon/').get().then((DataSnapshot snapshot) {
+      if (mounted) {
+        setState(() {
+          Y0 = snapshot.value;
+        });
+      }
+    });
+    root.child('Data/batt/').get().then((DataSnapshot snapshot) {
+      if (mounted) {
+        setState(() {
+          Y1 = snapshot.value;
+        });
+      }
+    });
+    /*List<int> list1 = [];
+    for (int i = 0; i < double.parse(X0);) {
+      list1.add(i);
+      i++;
+    }*/
     chartData.add(ChartSampleData(
-        time++, math.Random().nextInt(80), math.Random().nextInt(80)));
+        time++ /*double.parse(X0)*/, double.parse(Y0), double.parse(Y1)));
+    /*for (int i = 0; i < double.parse(X0);) {
+      chartData.removeAt(i);
+      i++;
+    }*/
     chartData.removeAt(0);
     _chartSeriesController.updateDataSource(
-        addedDataIndex: chartData.length - 1, removedDataIndex: 0);
+      removedDataIndex: 0, //list1,
+      addedDataIndex: chartData.length - 1,
+    );
   }
 
-  List<ChartSampleData> chartData = <ChartSampleData>[
-    ChartSampleData(0, 10, 5),
-    ChartSampleData(1, 13, 7),
-    ChartSampleData(2, 80, 8),
-    ChartSampleData(3, 30, 10),
-    ChartSampleData(4, 72, 11),
-    ChartSampleData(5, 30, 12),
-    ChartSampleData(6, 13, 11),
-    ChartSampleData(7, 80, 55),
-    ChartSampleData(8, 30, 70),
-    ChartSampleData(9, 72, 60),
-    ChartSampleData(10, 30, 55),
-    ChartSampleData(11, 13, 23),
-    ChartSampleData(12, 80, 17),
-    ChartSampleData(13, 30, 12),
-    ChartSampleData(14, 72, 30),
-    ChartSampleData(15, 30, 66),
-    ChartSampleData(16, 13, 40),
-    ChartSampleData(17, 80, 55),
-    ChartSampleData(18, 30, 10),
-    ChartSampleData(19, 72, 11),
-    ChartSampleData(20, 30, 77),
-    ChartSampleData(21, 13, 5),
-    ChartSampleData(22, 80, 50),
-    ChartSampleData(23, 30, 25),
-    ChartSampleData(24, 72, 63),
+  final List<ChartSampleData> chartData = <ChartSampleData>[
+    ChartSampleData(0, null, null),
+    ChartSampleData(1, null, null),
+    ChartSampleData(2, null, null),
+    ChartSampleData(3, null, null),
+    ChartSampleData(4, null, null),
+    ChartSampleData(5, null, null),
+    ChartSampleData(6, null, null),
+    ChartSampleData(7, null, null),
+    ChartSampleData(8, null, null),
+    ChartSampleData(9, null, null),
+    ChartSampleData(10, null, null),
+    ChartSampleData(11, null, null),
+    ChartSampleData(12, null, null),
+    ChartSampleData(13, null, null),
+    ChartSampleData(14, null, null),
+    ChartSampleData(15, null, null),
+    ChartSampleData(16, null, null),
+    ChartSampleData(17, null, null),
+    ChartSampleData(18, null, null),
+    ChartSampleData(19, null, null),
+    ChartSampleData(20, null, null),
+    ChartSampleData(21, null, null),
+    ChartSampleData(22, null, null),
+    ChartSampleData(23, null, null),
+    ChartSampleData(24, null, null),
   ];
 
   @override
@@ -74,37 +103,44 @@ class _MymobilegegevensState extends State<Mymobilegegevens> {
   }
 
   Widget build(BuildContext context) {
-    timer = Timer.periodic(const Duration(seconds: 1), _updateDataSource);
+    timer = Timer.periodic(const Duration(seconds: 10), _updateDataSource);
     return Scaffold(
       body: Center(
         child: Container(
           height: 500,
           width: 500,
           child: SfCartesianChart(
+              legend: Legend(
+                  isVisible: true,
+                  textStyle:
+                      TextStyle(color: Color.fromARGB(255, 160, 159, 159))),
               series: [
-                LineSeries<ChartSampleData, int>(
-                  onRendererCreated: (ChartSeriesController controller) {
-                    _chartSeriesController = controller;
-                  },
-                  dataSource: chartData,
-                  xValueMapper: (ChartSampleData data, _) => data.x,
-                  yValueMapper: (ChartSampleData data, _) => data.y,
-                  isVisible: vis,
-                ),
-                LineSeries<ChartSampleData, int>(
-                  onRendererCreated: (ChartSeriesController controller) {
-                    _chartSeriesController = controller;
-                  },
-                  dataSource: chartData,
-                  xValueMapper: (ChartSampleData data, _) => data.x,
-                  yValueMapper: (ChartSampleData data, _) => data.y1,
-                  color: Colors.red,
-                  isVisible: vis1,
-                )
+                LineSeries<ChartSampleData, num>(
+                    name: 'zon',
+                    onRendererCreated: (ChartSeriesController controller) {
+                      _chartSeriesController = controller;
+                    },
+                    dataSource: chartData,
+                    xValueMapper: (ChartSampleData data, _) => data.x,
+                    yValueMapper: (ChartSampleData data, _) => data.y,
+                    isVisible: true),
+                LineSeries<ChartSampleData, num>(
+                    name: 'batterij',
+                    onRendererCreated: (ChartSeriesController controller) {
+                      _chartSeriesController = controller;
+                    },
+                    dataSource: chartData,
+                    xValueMapper: (ChartSampleData data, _) => data.x,
+                    yValueMapper: (ChartSampleData data, _) => data.y1,
+                    color: Colors.red,
+                    isVisible: true)
               ],
               primaryXAxis: NumericAxis(
                 interval: 2,
-              )),
+                isVisible: false,
+              ),
+              primaryYAxis: NumericAxis(
+                  isVisible: true, interval: 1, minimum: 0, maximum: 14.0)),
         ),
       ),
     );
@@ -113,9 +149,9 @@ class _MymobilegegevensState extends State<Mymobilegegevens> {
 
 class ChartSampleData {
   ChartSampleData(this.x, this.y, this.y1);
-  final int x;
-  final int y;
-  final int y1;
+  final double x;
+  final double y;
+  final double y1;
 
   static void add(ChartSampleData chartSampleData) {}
 }

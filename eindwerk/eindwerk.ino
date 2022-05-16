@@ -154,27 +154,39 @@ void loop() {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
               }                                                   
+            else {
+              uit_Boiler();              
+              }
             }
          }
         else if (x == 1) {
           if (Dinsdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               zon_Fornuis();
-              }            
+              }   
+            else {
+              uit_Fornuis();
+              }         
             }
          }
         else if (x == 2) {
           if (Dinsdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              }            
+              }  
+            else {
+              uit_Lichten();
+              }          
             }
          }
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0 ){
             zon_Vaatwas();
-            }            
+            }    
+            else {
+              uit_Vaatwas();
+              }        
            }
          }
         x = x + 1;
@@ -186,14 +198,20 @@ void loop() {
           if (Donderdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
-              }                                                   
+              }     
+            else {
+              uit_Boiler();
+              }                                              
             }
          }
         else if (x == 1) {
           if (Donderdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               zon_Fornuis();
-              }            
+              } 
+            else {
+              uit_Fornuis();
+              }           
             }
          }
         else if (x == 2) {
@@ -1048,7 +1066,7 @@ void loop() {
        }
       }    
     }   
-  //opladen_batterij();
+  datum();
   grafiek_data();
 }
 
