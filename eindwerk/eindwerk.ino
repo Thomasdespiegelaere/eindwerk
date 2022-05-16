@@ -148,7 +148,7 @@ void loop() {
   stroomsensor(); 
   if (zon_voltage > 12.0 && batterij_level < 50){
     if (int(dag) == 1) { // dinsdag selectie
-      for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
+      for (int x = 0; x < 5;) {          // doorloopt de loop 4 keer 
         if (x == 0){
           if (Dinsdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
@@ -182,18 +182,23 @@ void loop() {
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0 ){
-            zon_Vaatwas();
+              zon_Vaatwas();
             }    
             else {
               uit_Vaatwas();
               }        
            }
          }
+        else if (x == 4){
+          if (uur >= 7.0 && uur <= 21.0) {   
+            opladen_batterij();   
+           }
+         } 
         x = x + 1;
        }
       }
     else if (int(dag) == 3) {      //donderdag selectie
-      for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
+      for (int x = 0; x < 5;) {          // doorloopt de loop 4 keer 
         if (x == 0){
           if (Donderdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
@@ -218,16 +223,27 @@ void loop() {
           if (Donderdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              }            
+              }   
+            else {
+              uit_Lichten();
+              }          
             }
          }
         else if (x == 3){
           if (Donderdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0){
-            zon_Vaatwas();  
-            }          
+              zon_Vaatwas();  
+            }
+            else {
+              uit_Vaatwas();
+              }          
            }
          }
+        else if (x == 4){
+          if (uur >= 7.0 && uur <= 21.0) {   
+            opladen_batterij();   
+           }
+         } 
         x = x + 1;
        }
       }
@@ -237,28 +253,40 @@ void loop() {
           if (Maandag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
-              }                                                   
+              }  
+            else {
+              uit_Boiler();
+              }                                                 
             }
          }
         else if (x == 1) {
           if (Maandag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               zon_Fornuis();
-              }            
+              } 
+            else {
+              uit_Fornuis();
+              }           
             }
          }
         else if (x == 2) {
           if (Maandag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              }            
+              }   
+            else {
+              uit_Lichten();
+              }         
             }
          }
         else if (x == 3){
           if (Maandag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {
-            zon_Vaatwas();
-            }            
+              zon_Vaatwas();
+            }  
+            else {
+              uit_Vaatwas();
+              }          
            }
          }
         x = x + 1;
@@ -290,7 +318,7 @@ void loop() {
         else if (x == 3){
           if (Vrijdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {
-            zon_Vaatwas();  
+              zon_Vaatwas();  
             }          
            }
          }
@@ -323,7 +351,7 @@ void loop() {
         else if (x == 3){
           if (Woensdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {
-            zon_Vaatwas();       
+              zon_Vaatwas();       
             }     
            }
          }
@@ -356,7 +384,7 @@ void loop() {
         else if (x == 3){
           if (Zaterdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {
-            zon_Vaatwas();            
+              zon_Vaatwas();            
             }
            }
          }
@@ -389,7 +417,7 @@ void loop() {
         else if (x == 3){
           if (Zondag_Vaatwas == true) { 
             if (uur >= 20.0 && uur <= 22.0) {
-            zon_Vaatwas();
+              zon_Vaatwas();
             }            
            }
          }
