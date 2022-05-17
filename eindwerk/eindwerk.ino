@@ -303,28 +303,40 @@ void loop() {
           if (Vrijdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
-              }                                                   
+              }     
+            else {
+              uit_Boiler();
+              }                                               
             }
          }
         else if (x == 1) {
           if (Vrijdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               zon_Fornuis();
-              }            
+              } 
+            else {
+              uit_Fornuis();
+              }           
             }
          }
         else if (x == 2) {
           if (Vrijdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              }            
+              }  
+            else {
+              uit_Lichten();
+              }          
             }
          }
         else if (x == 3){
           if (Vrijdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {
               zon_Vaatwas();  
-            }          
+            }   
+            else {
+              uit_Vaatwas();
+              }       
            }
          }
         else if (x == 4){
@@ -341,13 +353,19 @@ void loop() {
           if (Woensdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
-              }                                                   
+              }  
+            else {
+              uit_Boiler();
+              }                                                 
             }
          }
         else if (x == 1) {
           if (Woensdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               zon_Fornuis();
+              }
+            else {
+              uit_Fornuis();
               }            
             }
          }
@@ -355,7 +373,10 @@ void loop() {
           if (Woensdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              }            
+              }
+            else {
+              uit_Lichten();
+              }           
             }
          }
         else if (x == 3){
@@ -363,6 +384,9 @@ void loop() {
             if (uur >= 20.0 && uur <= 22.0) {
               zon_Vaatwas();       
             }     
+            else {
+              uit_Vaatwas();
+              }
            }
          }
         else if (x == 4){
@@ -379,20 +403,29 @@ void loop() {
           if (Zaterdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
-              }                                                   
+              }    
+            else {
+              uit_Boiler();
+              }                                                 
             }
          }
         else if (x == 1) {
           if (Zaterdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               zon_Fornuis();
-              }            
+              }  
+            else {
+              uit_Fornuis();
+              }          
             }
          }
         else if (x == 2) {
           if (Zaterdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
+              } 
+            else {
+              uit_Lichten();
               }            
             }
          }
@@ -401,6 +434,9 @@ void loop() {
             if (uur >= 20.0 && uur <= 22.0) {
               zon_Vaatwas();            
             }
+            else {
+              uit_Vaatwas();
+              }  
            }
          }
         else if (x == 4){
@@ -417,6 +453,9 @@ void loop() {
           if (Zondag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
+              }  
+            else {
+              uit_Boiler();
               }                                                   
             }
          }
@@ -424,21 +463,30 @@ void loop() {
           if (Zondag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               zon_Fornuis();
-              }            
+              }  
+            else {
+              uit_Fornuis();
+              }          
             }
          }
         else if (x == 2) {
           if (Zondag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              }            
+              }  
+            else {
+              uit_Lichten();
+              }           
             }
          }
         else if (x == 3){
           if (Zondag_Vaatwas == true) { 
             if (uur >= 20.0 && uur <= 22.0) {
               zon_Vaatwas();
-            }            
+            }
+            else {
+              uit_Vaatwas();
+              }              
            }
          }
         else if (x == 4){
@@ -457,21 +505,30 @@ void loop() {
           if (Dinsdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Boiler(); 
-              }                                                   
+              } 
+            else {
+              uit_Boiler();
+              }                                                    
             }
          }
         else if (x == 1) {
           if (Dinsdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              }  
+            else {
+              uit_Fornuis();
+              }          
             }
          }
         else if (x == 2) {
           if (Dinsdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Lichten();
-              }            
+              }  
+            else {
+              uit_Lichten();
+              }           
             }
          }
         else if (x == 3){
@@ -479,6 +536,9 @@ void loop() {
             if (uur >= 20.0 && uur <= 22.0) {
             batt_Vaatwas();            
             }
+            else {
+              uit_Vaatwas();
+              }  
            }
          }
         x = x + 1;
@@ -490,13 +550,19 @@ void loop() {
           if (Donderdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Boiler(); 
-              }                                                   
+              }
+            else {
+              uit_Boiler();
+              }                                                     
             }
          }
         else if (x == 1) {
           if (Donderdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
+              }
+            else {
+              uit_Fornuis();
               }            
             }
          }
@@ -504,7 +570,10 @@ void loop() {
           if (Donderdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Lichten();
-              }            
+              }    
+            else {
+              uit_Lichten();
+              }         
             }
          }
         else if (x == 3){
@@ -512,6 +581,9 @@ void loop() {
             if (uur >= 20.0 && uur <= 22.0) {
             batt_Vaatwas();            
             }
+            else {
+              uit_Vaatwas();
+              }  
            }
          }
         x = x + 1;
@@ -523,20 +595,29 @@ void loop() {
           if (Maandag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Boiler(); 
-              }                                                   
+              } 
+            else {
+              uit_Boiler();
+              }                                                    
             }
          }
         else if (x == 1) {
           if (Maandag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              } 
+            else {
+              uit_Fornuis();
+              }           
             }
          }
         else if (x == 2) {
           if (Maandag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Lichten();
+              } 
+            else {
+              uit_Lichten();
               }            
             }
          }
@@ -545,6 +626,9 @@ void loop() {
             if (uur >= 20.0 && uur <= 22.0) {
             batt_Vaatwas();            
             }
+            else {
+              uit_Vaatwas();
+              }  
            }
          }
         x = x + 1;
@@ -556,6 +640,9 @@ void loop() {
           if (Vrijdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Boiler(); 
+              }  
+            else {
+              uit_Boiler();
               }                                                   
             }
          }
@@ -563,21 +650,30 @@ void loop() {
           if (Vrijdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              } 
+            else {
+              uit_Fornuis();
+              }           
             }
          }
         else if (x == 2) {
           if (Vrijdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Lichten();
-              }            
+              }  
+            else {
+              uit_Lichten();
+              }           
             }
          }
         else if (x == 3){
           if (Vrijdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {
             batt_Vaatwas(); 
-            }           
+            }  
+            else {
+              uit_Vaatwas();
+              }           
            }
          }
         x = x + 1;
@@ -589,28 +685,40 @@ void loop() {
           if (Woensdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Boiler(); 
-              }                                                   
+              }
+            else {
+              uit_Boiler();
+              }                                                     
             }
          }
         else if (x == 1) {
           if (Woensdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              }   
+            else {
+              uit_Fornuis();
+              }         
             }
          }
         else if (x == 2) {
           if (Woensdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Lichten();
-              }            
+              }   
+            else {
+              uit_Lichten();
+              }          
             }
          }
         else if (x == 3){
           if (Woensdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {
             batt_Vaatwas(); 
-            }           
+            }    
+            else {
+              uit_Vaatwas();
+              }         
            }
          }
         x = x + 1;
@@ -622,13 +730,19 @@ void loop() {
           if (Zaterdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Boiler(); 
-              }                                                   
+              } 
+            else {
+              uit_Boiler();
+              }                                                    
             }
          }
         else if (x == 1) {
           if (Zaterdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
+              }
+            else {
+              uit_Fornuis();
               }            
             }
          }
@@ -636,14 +750,20 @@ void loop() {
           if (Zaterdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Lichten();
+              } 
+            else {
+              uit_Lichten();
               }            
             }
          }
         else if (x == 3){
           if (Zaterdag_Vaatwas == true) {
-            if (uur >= 20.0 && uur <= 22.0) {
-            batt_Vaatwas(); 
-            }           
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }           
            }
          }
         x = x + 1;
@@ -655,28 +775,42 @@ void loop() {
           if (Zondag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Boiler(); 
-              }                                                   
+              }   
+            else {
+              uit_Boiler();
+              }                                                  
             }
          }
         else if (x == 1) {
           if (Zondag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              }  
+            else {
+              uit_Fornuis();
+              }          
             }
          }
         else if (x == 2) {
           if (Zondag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               batt_Lichten();
-              }            
+              }       
+            else {
+              uit_Lichten();
+              }      
             }
          }
         else if (x == 3){
           if (Zondag_Vaatwas == true) {
-            batt_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
          }
+        }
         x = x + 1;
        }
       }   
@@ -688,28 +822,42 @@ void loop() {
           if (Dinsdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Boiler(); 
-              }                                                   
+              } 
+            else {
+              uit_Boiler();
+              }                                                    
             }
          }
         else if (x == 1) {
           if (Dinsdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               net_Fornuis();
-              }            
+              }  
+            else {
+              uit_Fornuis();
+              }          
             }
          }
         else if (x == 2) {
           if (Dinsdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Lichten();
-              }            
+              }   
+            else {
+              uit_Lichten();
+              }          
             }
          }
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
-            net_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
          }
+        }
         x = x + 1;
        }
       }
@@ -719,27 +867,41 @@ void loop() {
           if (Donderdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Boiler(); 
-              }                                                   
+              } 
+            else {
+              uit_Boiler();
+              }                                                    
             }
          }
         else if (x == 1) {
           if (Donderdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               net_Fornuis();
-              }            
+              }     
+            else {
+              uit_Fornuis();
+              }       
             }
          }
         else if (x == 2) {
           if (Donderdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Lichten();
-              }            
+              }
+            else {
+              uit_Lichten();
+              }             
             }
          }
         else if (x == 3){
-          if (Donderdag_Vaatwas == true) {
-            net_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+          }
          }
         x = x + 1;
        }
@@ -750,27 +912,41 @@ void loop() {
           if (Maandag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Boiler(); 
-              }                                                   
+              }   
+            else {
+              uit_Boiler();
+              }                                                  
             }
          }
         else if (x == 1) {
           if (Maandag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               net_Fornuis();
-              }            
+              }   
+            else {
+              uit_Fornuis();
+              }         
             }
          }
         else if (x == 2) {
           if (Maandag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Lichten();
-              }            
+              }  
+            else {
+              uit_Lichten();
+              }           
             }
          }
         else if (x == 3){
-          if (Maandag_Vaatwas == true) {
-            net_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+          }
          }
         x = x + 1;
        }
@@ -781,27 +957,41 @@ void loop() {
           if (Vrijdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Boiler(); 
-              }                                                   
+              }
+            else {
+              uit_Boiler();
+              }                                                     
             }
          }
         else if (x == 1) {
           if (Vrijdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               net_Fornuis();
-              }            
+              } 
+            else {
+              uit_Fornuis();
+              }           
             }
          }
         else if (x == 2) {
           if (Vrijdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Lichten();
-              }            
+              }   
+            else {
+              uit_Lichten();
+              }          
             }
          }
         else if (x == 3){
-          if (Vrijdag_Vaatwas == true) {
-            net_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+           }
          }
         x = x + 1;
        }
@@ -812,6 +1002,9 @@ void loop() {
           if (Woensdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Boiler(); 
+              }  
+            else {
+              uit_Boiler();
               }                                                   
             }
          }
@@ -819,20 +1012,31 @@ void loop() {
           if (Woensdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               net_Fornuis();
-              }            
+              }    
+            else {
+              uit_Fornuis();
+              }        
             }
          }
         else if (x == 2) {
           if (Woensdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Lichten();
-              }            
+              }  
+            else {
+              uit_Lichten();
+              }           
             }
          }
         else if (x == 3){
-          if (Woensdag_Vaatwas == true) {
-            net_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+           }
          }
         x = x + 1;
        }
@@ -843,27 +1047,41 @@ void loop() {
           if (Zaterdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Boiler(); 
-              }                                                   
+              }
+            else {
+              uit_Boiler();
+              }                                                     
             }
          }
         else if (x == 1) {
           if (Zaterdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               net_Fornuis();
-              }            
+              }   
+            else {
+              uit_Fornuis();
+              }         
             }
          }
         else if (x == 2) {
           if (Zaterdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Lichten();
-              }            
+              }  
+            else {
+              uit_Lichten();
+              }           
             }
          }
         else if (x == 3){
-          if (Zaterdag_Vaatwas == true) {
-            net_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+           }
          }
         x = x + 1;
        }
@@ -874,27 +1092,41 @@ void loop() {
           if (Zondag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Boiler(); 
-              }                                                   
+              } 
+            else {
+              uit_Boiler();
+              }                                                    
             }
          }
         else if (x == 1) {
           if (Zondag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               net_Fornuis();
-              }            
+              } 
+            else {
+              uit_Fornuis();
+              }           
             }
          }
         else if (x == 2) {
           if (Zondag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               net_Lichten();
+              } 
+            else {
+              uit_Lichten();
               }            
             }
          }
         else if (x == 3){
-          if (Zondag_Vaatwas == true) {
-            net_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+           }
          }
         x = x + 1;
        }
@@ -907,6 +1139,9 @@ void loop() {
           if (Dinsdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
+              }  
+            else {
+              uit_Boiler();
               }                                                   
             }
          }
@@ -914,20 +1149,31 @@ void loop() {
           if (Dinsdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              }     
+            else {
+              uit_Fornuis();
+              }       
             }
          }
         else if (x == 2) {
           if (Dinsdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
+              } 
+            else {
+              uit_Lichten();
               }            
             }
          }
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
-            batt_Vaatwas();            
-            }
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+           }
          }
         x = x + 1;
        }
@@ -938,6 +1184,9 @@ void loop() {
           if (Donderdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
+              }  
+            else {
+              uit_Boiler();
               }                                                   
             }
          }
@@ -945,6 +1194,9 @@ void loop() {
           if (Donderdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
+              }
+            else {
+              uit_Fornuis();
               }            
             }
          }
@@ -952,13 +1204,21 @@ void loop() {
           if (Donderdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              }            
+              }  
+            else {
+              uit_Lichten();
+              }           
             }
          }
         else if (x == 3){
-          if (Donderdag_Vaatwas == true) {
-            batt_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+           }
          }
         x = x + 1;
        }
@@ -969,6 +1229,9 @@ void loop() {
           if (Maandag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
+              }  
+            else {
+              uit_Boiler();
               }                                                   
             }
          }
@@ -976,20 +1239,31 @@ void loop() {
           if (Maandag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              } 
+            else {
+              uit_Fornuis();
+              }           
             }
          }
         else if (x == 2) {
           if (Maandag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              }            
+              }  
+            else {
+              uit_Lichten();
+              }           
             }
          }
         else if (x == 3){
-          if (Maandag_Vaatwas == true) {
-            batt_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+           }
          }
         x = x + 1;
        }
@@ -1000,27 +1274,41 @@ void loop() {
           if (Vrijdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
-              }                                                   
+              }
+            else {
+              uit_Boiler();
+              }                                                     
             }
          }
         else if (x == 1) {
           if (Vrijdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              }      
+            else {
+              uit_Fornuis();
+              }      
             }
          }
         else if (x == 2) {
           if (Vrijdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
+              } 
+            else {
+              uit_Lichten();
               }            
             }
          }
         else if (x == 3){
-          if (Vrijdag_Vaatwas == true) {
-            batt_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+           }
          }
         x = x + 1;
        }
@@ -1031,27 +1319,41 @@ void loop() {
           if (Woensdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
-              }                                                   
+              }
+            else {
+              uit_Boiler();
+              }                                                     
             }
          }
         else if (x == 1) {
           if (Woensdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              }       
+            else {
+              uit_Fornuis();
+              }     
             }
          }
         else if (x == 2) {
           if (Woensdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
+              } 
+            else {
+              uit_Lichten();
               }            
             }
          }
         else if (x == 3){
-          if (Woensdag_Vaatwas == true) {
-            batt_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+           }
          }
         x = x + 1;
        }
@@ -1062,26 +1364,40 @@ void loop() {
           if (Zaterdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
-              }                                                   
+              }   
+            else {
+              uit_Boiler();
+              }                                                  
             }
          }
         else if (x == 1) {
           if (Zaterdag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              }  
+            else {
+              uit_Fornuis();
+              }          
             }
          }
         else if (x == 2) {
           if (Zaterdag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              }            
+              }       
+            else {
+              uit_Lichten();
+              }      
             }
          }
         else if (x == 3){
-          if (Zaterdag_Vaatwas == true) {
-            batt_Vaatwas();            
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
             }
          }
         x = x + 1;
@@ -1093,27 +1409,41 @@ void loop() {
           if (Zondag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Boiler(); 
-              }                                                   
+              }         
+            else {
+              uit_Boiler();
+              }                                            
             }
          }
         else if (x == 1) {
           if (Zondag_Fornuis == true) { 
             if (uur >= 18.0 && uur <= 20.0 ){
               batt_Fornuis();
-              }            
+              } 
+            else {
+              uit_Fornuis();
+              }           
             }
          }
         else if (x == 2) {
           if (Zondag_Lichten == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
               zon_Lichten();
-              }            
+              }        
+            else {
+              uit_Lichten();
+              }     
             }
          }
         else if (x == 3){
-          if (Zondag_Vaatwas == true) {
-            batt_Vaatwas();            
-            }
+          if (Dinsdag_Vaatwas == true) {
+            if (uur >= 20.0 && uur <= 22.0) {                            
+              batt_Vaatwas(); 
+            }  
+            else {
+              uit_Vaatwas();
+              }  
+           }
          }
         x = x + 1;
        }
