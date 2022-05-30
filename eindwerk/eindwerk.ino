@@ -851,7 +851,7 @@ void loop() {
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {                            
-              batt_Vaatwas(); 
+              net_Vaatwas(); 
             }  
             else {
               uit_Vaatwas();
@@ -896,7 +896,7 @@ void loop() {
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {                            
-              batt_Vaatwas(); 
+              net_Vaatwas(); 
             }  
             else {
               uit_Vaatwas();
@@ -941,7 +941,7 @@ void loop() {
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {                            
-              batt_Vaatwas(); 
+              net_Vaatwas(); 
             }  
             else {
               uit_Vaatwas();
@@ -986,7 +986,7 @@ void loop() {
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {                            
-              batt_Vaatwas(); 
+              net_Vaatwas(); 
             }  
             else {
               uit_Vaatwas();
@@ -1031,7 +1031,7 @@ void loop() {
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {                            
-              batt_Vaatwas(); 
+              net_Vaatwas(); 
             }  
             else {
               uit_Vaatwas();
@@ -1076,7 +1076,7 @@ void loop() {
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {                            
-              batt_Vaatwas(); 
+              net_Vaatwas(); 
             }  
             else {
               uit_Vaatwas();
@@ -1121,7 +1121,7 @@ void loop() {
         else if (x == 3){
           if (Dinsdag_Vaatwas == true) {
             if (uur >= 20.0 && uur <= 22.0) {                            
-              batt_Vaatwas(); 
+              net_Vaatwas(); 
             }  
             else {
               uit_Vaatwas();
