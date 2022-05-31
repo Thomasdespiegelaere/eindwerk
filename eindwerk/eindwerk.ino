@@ -82,7 +82,7 @@ unsigned long tijd;
 float uur;
 float dag = 0.0;
 int corr = 0;
-void setup() {
+void setup() {    // de initialisatie gebeurd maar één keer
   Serial.begin(9600);
   EEPROM.get(0, Dinsdag_Boiler);
   EEPROM.get(1, Dinsdag_Fornuis);
@@ -148,7 +148,7 @@ void loop() {
   stroomsensor(); 
   if (zon_voltage > 12.0 && batterij_level < 50){ //zonnepaneel selectie
     if (int(dag) == 1) { // dinsdag selectie
-      for (int x = 0; x < 5;) {          // doorloopt de loop 4 keer 
+      for (int x = 0; x < 5;) {          // doorloopt de loop 5 keer 
         if (x == 0){
           if (Dinsdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
@@ -198,7 +198,7 @@ void loop() {
        }
       }
     else if (int(dag) == 3) {      //donderdag selectie
-      for (int x = 0; x < 5;) {          // doorloopt de loop 4 keer 
+      for (int x = 0; x < 5;) {          // doorloopt de loop 5 keer 
         if (x == 0){
           if (Donderdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
@@ -248,7 +248,7 @@ void loop() {
        }
       }
     else if (int(dag) == 0) { //maandag selectie
-      for (int x = 0; x < 5;) {          // doorloopt de loop 4 keer 
+      for (int x = 0; x < 5;) {          // doorloopt de loop 5 keer 
         if (x == 0){
           if (Maandag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
@@ -298,7 +298,7 @@ void loop() {
        }
       }  
     else if (int(dag) == 4) { //vrijdag selectie
-      for (int x = 0; x < 5;) {          // doorloopt de loop 4 keer 
+      for (int x = 0; x < 5;) {          // doorloopt de loop 5 keer 
         if (x == 0){
           if (Vrijdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
@@ -348,7 +348,7 @@ void loop() {
        }
        }
     else if (int(dag) == 2) {      //woensdag selectie 
-      for (int x = 0; x < 5;) {          // doorloopt de loop 4 keer 
+      for (int x = 0; x < 5;) {          // doorloopt de loop 5 keer 
         if (x == 0){
           if (Woensdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
@@ -398,7 +398,7 @@ void loop() {
        }
       }
     else if (int(dag) == 5) { //zaterdag selectie
-      for (int x = 0; x < 5;) {          // doorloopt de loop 4 keer 
+      for (int x = 0; x < 5;) {          // doorloopt de loop 5 keer 
         if (x == 0){
           if (Zaterdag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
@@ -448,7 +448,7 @@ void loop() {
        }
       }
     else if (int(dag) == 6) { // zondag selectie
-      for (int x = 0; x < 5;) {          // doorloopt de loop 4 keer 
+      for (int x = 0; x < 5;) {          // doorloopt de loop 5 keer 
         if (x == 0){
           if (Zondag_Boiler == true) {
             if (uur >= 7.0 && uur <= 23.0 ){
@@ -815,7 +815,7 @@ void loop() {
        }
       }   
       }
-  else if (zon_voltage < 12.0 && batterij_level < 50){
+  else if (zon_voltage < 12.0 && batterij_level < 50){  // net selectie
     if (int(dag) == 1) { // dinsdag selectie
       for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
         if (x == 0){
@@ -1132,7 +1132,7 @@ void loop() {
        }
       }    
     }
-    else if (zon_voltage > 12.0 && batterij_level > 50){
+    else if (zon_voltage > 12.0 && batterij_level > 50){   // tussen de twee selectie
     if (int(dag) == 1) { // dinsdag selectie
       for (int x = 0; x < 4;) {          // doorloopt de loop 4 keer 
         if (x == 0){
@@ -1918,50 +1918,74 @@ void opladen_batterij() {
 
 void zon_Boiler() {
   digitalWrite(Boiler_zon, HIGH);
+  digitalWrite(Boiler_batt, LOW);
+  digitalWrite(Boiler_net, LOW);
   }
 
 void zon_Fornuis() {
   digitalWrite(Fornuis_zon, HIGH);
+  digitalWrite(Fornuis_batt, LOW);
+  digitalWrite(Fornuis_net, LOW);
   }
 
 void zon_Lichten() {
   digitalWrite(Lichten_zon, HIGH);
+  digitalWrite(Lichten_batt, LOW);
+  digitalWrite(Lichten_net, LOW);
   }
 
 void zon_Vaatwas() {
   analogWrite(Vaatwas_zon, 20);
+  analogWrite(Vaatwas_batt, 0);
+  analogWrite(Vaatwas_net, 0);
   }
 
 void batt_Boiler() {
   digitalWrite(Boiler_batt, HIGH);
+  digitalWrite(Boiler_zon, LOW);
+  digitalWrite(Boiler_net, LOW);
   }
 
 void batt_Fornuis() {
   digitalWrite(Fornuis_batt, HIGH);
+  digitalWrite(Fornuis_zon, LOW);
+  digitalWrite(Fornuis_net, LOW);
   }
 
 void batt_Lichten() {
   digitalWrite(Lichten_batt, HIGH);
+  digitalWrite(Lichten_zon, LOW);
+  digitalWrite(Lichten_net, LOW);
   }
 
 void batt_Vaatwas() {
   analogWrite(Vaatwas_batt, 20);
+  analogWrite(Vaatwas_zon, 0);
+  analogWrite(Vaatwas_net, 0);
   }
 
 void net_Boiler() {
   digitalWrite(Boiler_net, HIGH);
+  digitalWrite(Boiler_zon, LOW);
+  digitalWrite(Boiler_batt, LOW);
   }
 
 void net_Fornuis() {
   digitalWrite(Fornuis_net, HIGH);
+  digitalWrite(Fornuis_zon, LOW);
+  digitalWrite(Fornuis_batt, LOW);
   }
 
 void net_Lichten() {
   digitalWrite(Lichten_net, HIGH);
+  digitalWrite(Lichten_zon, LOW);
+  digitalWrite(Lichten_batt, LOW);
   }
 
 void net_Vaatwas() {
   analogWrite(Vaatwas_net, 20);
+  analogWrite(Vaatwas_zon, 0);
+  analogWrite(Vaatwas_batt, 0);
   }
   
 void uit_Boiler() {
