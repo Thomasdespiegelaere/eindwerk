@@ -193,6 +193,9 @@ void loop() {
           if (uur >= 7.0 && uur <= 21.0) {   
             opladen_batterij();   
            }
+          else {
+            analogWrite(Mosfet_opladen, 0);            
+            }
          } 
         x = x + 1;
        }
@@ -243,6 +246,9 @@ void loop() {
           if (uur >= 7.0 && uur <= 21.0) {   
             opladen_batterij();   
            }
+          else {
+            analogWrite(Mosfet_opladen, 0);            
+            }
          } 
         x = x + 1;
        }
@@ -293,6 +299,9 @@ void loop() {
           if (uur >= 7.0 && uur <= 21.0) {   
             opladen_batterij();   
            }
+          else {
+            analogWrite(Mosfet_opladen, 0);            
+            }
          } 
         x = x + 1;
        }
@@ -343,6 +352,9 @@ void loop() {
           if (uur >= 7.0 && uur <= 21.0) {   
             opladen_batterij();   
            }
+          else {
+            analogWrite(Mosfet_opladen, 0);            
+            }
          } 
         x = x + 1;
        }
@@ -393,6 +405,9 @@ void loop() {
           if (uur >= 7.0 && uur <= 21.0) {   
             opladen_batterij();   
            }
+          else {
+            analogWrite(Mosfet_opladen, 0);            
+            }
          } 
         x = x + 1;
        }
@@ -443,6 +458,9 @@ void loop() {
           if (uur >= 7.0 && uur <= 21.0) {   
             opladen_batterij();   
            }
+          else {
+            analogWrite(Mosfet_opladen, 0);            
+            }
          } 
         x = x + 1;
        }
@@ -493,6 +511,9 @@ void loop() {
           if (uur >= 7.0 && uur <= 21.0) {   
             opladen_batterij();   
            }
+          else {
+            analogWrite(Mosfet_opladen, 0);            
+            }
          } 
         x = x + 1;
        }
@@ -1826,16 +1847,18 @@ delay(1000); // wacht 1 seconde
 }
 
 void spanningzon() {
-  adc_value_zon = analogRead(pinA1);
+  /*adc_value_zon = analogRead(pinA1);
   adc_voltage_zon  = (adc_value_zon * 5.0 ) / 1023.0;  
   zon_voltage = (adc_voltage_zon / 0.2) + 0.17 ;
-  delay(10);
+  delay(10);*/
+  zon_voltage = random(1100, 1300) / 100.0;
   }
 
 void batterijspanning() {
-  adc_value_batt = analogRead(pinA0);
+  /*adc_value_batt = analogRead(pinA0);
   adc_voltage_batt  = (adc_value_batt * 5.0 ) / 1023.0;  
-  batt_voltage = (adc_voltage_batt / 0.2) + 0.17 ;
+  batt_voltage = (adc_voltage_batt / 0.2) + 0.17 ;*/
+  batt_voltage = random(1100, 1300) / 100.0;
   delay(500);
   if (batt_voltage >= 12.70) {
     batterij_level = 100;         
